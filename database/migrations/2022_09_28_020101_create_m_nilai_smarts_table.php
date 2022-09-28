@@ -20,8 +20,8 @@ return new class extends Migration
             $table->foreign('alternative_id')->references('id')->on('alternatives');
             $table->foreign('criteria_id')->references('id')->on('criterias');
             $table->float('nilai_awal', 5, 3);
-            $table->float('nilai_utility', 5, 3);
-            $table->float('nilai_akhir', 5, 3);
+            $table->float('nilai_utility', 5, 3)->nullable();
+            $table->float('nilai_akhir', 5, 3)->nullable();
             $table->timestamps();
         });
     }

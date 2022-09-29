@@ -56,7 +56,7 @@
             <div class="col-lg-12">
               <nav class="navbar navbar-expand-lg">
                 <a class="navbar-brand" href="{{ asset('landingTemplate/index.html') }}">
-                  <img src="{{ asset('landingTemplate/assets/img/logo/logo.svg') }}" alt="Logo" />
+                  {{-- <img src="{{ asset('landingTemplate/assets/img/logo/logo.svg') }}" alt="Logo" /> --}}
                 </a>
                 <button
                   class="navbar-toggler"
@@ -91,10 +91,10 @@
                       <a class="page-scroll" href="#contact">Contact</a>
                     </li>
                     <li class="nav-item">
-                      <a href="/">Login</a>
+                      <a href="/login">Login</a>
                     </li>
                     <li class="nav-item">
-                      <a href="/">Register</a>
+                      <a href="/register">Register</a>
                     </li>
                   </ul>
                 </div>
@@ -118,17 +118,16 @@
           <div class="col-lg-6">
             <div class="hero-content">
               <h1 class="wow fadeInUp" data-wow-delay=".4s">
-                Your using free lite version
+                SMART dalam menentukan jurusan kuliah
               </h1>
               <p class="wow fadeInUp" data-wow-delay=".6s">
-                Please, purchase full version to get all sections, features and
-                permission to remove footer credit.
+                Kamu calon mahasiswa yang sudah memiliki beberapa pilihan untuk jurusan kuliah, tapi masih bingung untuk menentukan mana yang terbaik?
               </p>
               <a
                 href="javascript:void(0)"
                 class="main-btn border-btn btn-hover wow fadeInUp"
                 data-wow-delay=".6s"
-                >Purchase Now</a
+                >Daftar Sekarang</a
               >
               <a href="#features" class="scroll-bottom">
                 <i class="lni lni-arrow-down"></i
@@ -137,7 +136,7 @@
           </div>
           <div class="col-lg-6">
             <div class="hero-img wow fadeInUp" data-wow-delay=".5s">
-              <img src="{{ asset('landingTemplate/assets/img/hero/hero-img.png') }}" alt="" />
+              <img src="{{ asset('landingTemplate/assets/img/hero/img1.jpg') }}" alt="" />
             </div>
           </div>
         </div>
@@ -155,10 +154,11 @@
                 <i class="lni lni-bootstrap"></i>
               </div>
               <div class="content">
-                <h3>Bootstrap 5</h3>
+                <h3>10 Kriteria</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore
+                  Kami telah menentukan 10 kriteria utama
+                  untuk kamu pertimbangkan dalam memilih
+                  jurusan kuliah
                 </p>
               </div>
             </div>
@@ -169,10 +169,10 @@
                 <i class="lni lni-layout"></i>
               </div>
               <div class="content">
-                <h3>Clean Design</h3>
+                <h3>Metode SMART</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore
+                  Metode SMART adalah metode yang digunakan sebagai panduan untuk menetapkan tujuan, target atau sasaran.
+                  Kata SMART pada metode SMART ini adalah akronim dari Specific, Measurable, Achievable, Relevant, dan Timely.
                 </p>
               </div>
             </div>
@@ -183,10 +183,9 @@
                 <i class="lni lni-coffee-cup"></i>
               </div>
               <div class="content">
-                <h3>Easy to Use</h3>
+                <h3>Pilihan Terbaik</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore
+                  Lihat ranking pilihan terbaik berdasarkan nilai kriteria.
                 </p>
               </div>
             </div>

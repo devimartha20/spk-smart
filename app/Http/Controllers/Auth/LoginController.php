@@ -47,6 +47,23 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function login(Request $request){
+        $input = $request->all();
+        $this->validate($request, [
+            'email'=>'required|email|',
+            'password'=>'required'
+        ]);
+
+        if(auth()->attempt(array('email'=>$input['email'], 'password'=>$input['password']))) {
+            if(auth()->user()->role == 0){
+                return redirect()->route('user.dashboard');
+            }elseif(auth()->user()->role == 1){
+                return redirect()->route('admin.dashboard');
+            }
+        }else{
+            return redirect()->route('login')->with('Email atau password salah!');
+        }
+    }
 
 
 }

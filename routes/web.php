@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\AdminController;
+use App\Http\Controllers\Auth\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,10 +23,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], function(){
     Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 });
 
-Route::group(['prefix' => 'user', 'middleware' => 'auth'], function(){
+Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser']], function(){
     Route::get('dashboard', [UserController::class, 'index'])->name('user.dashboard');
 });

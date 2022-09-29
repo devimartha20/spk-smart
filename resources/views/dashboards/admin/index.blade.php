@@ -1,1 +1,1 @@
-<p>admin dashboard</p>
+@extends('layouts.dashLayout')

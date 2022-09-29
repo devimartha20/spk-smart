@@ -1,1 +1,1 @@
-<p>user dashboard</p>
+@extends('layouts.dashLayout')

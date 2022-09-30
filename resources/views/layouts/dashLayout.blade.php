@@ -1072,8 +1072,8 @@
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <script src="{{ asset('dashTemplate/template') }}/vendors/chart.js/Chart.min.js"></script>
-  <script src="{{ asset('dashTemplate/template') }}/vendors/datatables.net/jquery.dataTables.js"></script>
-  <script src="{{ asset('dashTemplate/template') }}/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  {{-- <script src="{{ asset('dashTemplate/template') }}/vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="{{ asset('dashTemplate/template') }}/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script> --}}
   <script src="{{ asset('dashTemplate/template') }}/js/dataTables.select.min.js"></script>
 
   <!-- End plugin js for this page -->

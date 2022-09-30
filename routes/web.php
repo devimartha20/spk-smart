@@ -19,14 +19,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::middleware(['middleware'=>'PreventBackHistory'])->group(function(){
+    Auth::routes();
+});
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], function(){
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin', 'PreventBackHistory']], function(){
     Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 });
 
-Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser']], function(){
+Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser','PreventBackHistory']], function(){
     Route::get('dashboard', [UserController::class, 'index'])->name('user.dashboard');
 });

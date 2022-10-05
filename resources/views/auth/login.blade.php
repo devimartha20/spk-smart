@@ -37,11 +37,7 @@
                         <div class="form-group">
                             <input type="email" id='email' class="form-control form-control-lg" placeholder="Email" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                         </div>
-                        @error('email')
-                            <span role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+
                         <div class="form-group">
                         <input type="password" id='password' class="form-control form-control-lg" placeholder="Password" @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" autofocus>
                         @error('password')

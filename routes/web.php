@@ -23,6 +23,8 @@ Route::middleware(['PreventBackHistory'])->group(function () {
     Auth::routes();
 });
 
+Route::view('/test', 'test');
+
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

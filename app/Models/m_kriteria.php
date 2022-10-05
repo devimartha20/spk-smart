@@ -40,4 +40,9 @@ class m_kriteria extends Model
     {
         DB::table('criterias')->where('id', $id)->delete();
     }
+
+    public function jumlahData()
+    {
+        DB::table('criterias')->count();
+    }
 }

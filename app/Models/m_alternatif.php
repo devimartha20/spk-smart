@@ -41,4 +41,9 @@ class m_alternatif extends Model
     {
         DB::table('alterinatives')->where('id', $id)->delete();
     }
+
+    public function jumlahData()
+    {
+        DB::table('alterinatives')->where('user_id', Auth::user()->id)->count();
+    }
 }

@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['middleware'=>'PreventBackHistory'])->group(function(){
+Route::middleware(['PreventBackHistory'])->group(function () {
     Auth::routes();
 });
 

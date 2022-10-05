@@ -1,1 +1,1 @@
-@extends('layouts.dashLayout')
+@extends('layouts.adminLayout.adminLayout')

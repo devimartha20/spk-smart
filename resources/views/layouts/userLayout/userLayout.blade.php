@@ -21,6 +21,8 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ asset('dashTemplate/template/images/favicon.png') }}" />
 
+  @yield('cssContent')
+
   @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
@@ -336,6 +338,7 @@
   </div>
   <!-- container-scroller -->
 
+  @yield('jsContent')
   <!-- plugins:js -->
   <script src="{{ asset('dashTemplate/template') }}/vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->

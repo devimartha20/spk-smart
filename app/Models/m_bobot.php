@@ -41,4 +41,9 @@ class m_bobot extends Model
     {
         DB::table('bobots')->where('id', $id)->delete();
     }
+
+    public function bobotCriteria($criteria_id)
+    {
+        return DB::table('bobots')->join('criterias', 'criterias.id', '=','bobots.criteria_id')->where('user_id', Auth::user()->id)->where('criteria_id', $criteria_id)->get();
+    }
 }

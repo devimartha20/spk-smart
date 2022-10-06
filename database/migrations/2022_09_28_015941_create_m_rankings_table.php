@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('rankings', function (Blueprint $table) {
             $table->id();
             $table->float('hasil_akhir', 5, 3);
-            $table->integer('ranking');
+            $table->integer('ranking')->nullable();
             $table->unsignedBigInteger('alternative_id');
             $table->foreign('alternative_id')->references('id')->on('alternatives');
             $table->timestamps();

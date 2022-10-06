@@ -32,7 +32,8 @@
     </p>
     <hr><br>
     <form class="forms-sample">
-        <div class="form-group">
+
+        {{-- <div class="form-group">
             <label for="biaya"><h4>Tingkat Minat</h4></label>
             <p class="card-secription">Seberapa penting tingkat minat pribadi kamu terhadap jurusan yang dipilih?</p>
             <input class="progress" type="range" name="minat" id="get-minat" min="1" max="10" value="1" onchange="fetch_minat()" step="1" required>
@@ -91,7 +92,7 @@
             <p class="card-secription">Seberapa penting jumlah peminat jurusan yang sedikit bagi kamu?</p>
             <input class="progress" type="range" name="peminat" id="get-peminat" min="1" max="10" value="1" onchange="fetch_peminat()" step="1" required>
             <input type="number" id="put-peminat" style="width:3rem;" value="1" readonly>
-        </div>
+        </div> --}}
 
       <button type="submit" class="btn btn-primary mr-2">Submit</button>
       <button class="btn btn-light">Cancel</button>
@@ -101,45 +102,45 @@
 
 @section('jsContent')
 <script>
-    function fetch_minat(){
-        var getMinat = document.getElementById("get-minat").value;
-        document.getElementById("put-minat").value = getMinat;
-    }
-    function fetch_biayaKuliah(){
-        var getBiayaKuliah = document.getElementById("get-biayaKuliah").value;
-        document.getElementById("put-biayaKuliah").value = getBiayaKuliah;
-    }
-    function fetch_akreditasiKampus(){
-        var getakreditasiKampus = document.getElementById("get-akreditasiKampus").value;
-        document.getElementById("put-akreditasiKampus").value = getakreditasiKampus;
-    }
-    function fetch_akreditasiJurusan(){
-        var getakreditasiJurusan = document.getElementById("get-akreditasiJurusan").value;
-        document.getElementById("put-akreditasiJurusan").value = getakreditasiJurusan;
-    }
-    function fetch_prospekKerja(){
-        var getprospekKerja = document.getElementById("get-prospekKerja").value;
-        document.getElementById("put-prospekKerja").value = getprospekKerja;
-    }
-    function fetch_jenjangPendidikan(){
-        var getjenjangPendidikan = document.getElementById("get-jenjangPendidikan").value;
-        document.getElementById("put-jenjangPendidikan").value = getjenjangPendidikan;
-    }
-    function fetch_sulitMasuk(){
-        var getsulitMasuk = document.getElementById("get-sulitMasuk").value;
-        document.getElementById("put-sulitMasuk").value = getsulitMasuk;
-    }
-    function fetch_sulitLulus(){
-        var getsulitLulus = document.getElementById("get-sulitLulus").value;
-        document.getElementById("put-sulitLulus").value = getsulitLulus;
-    }
-    function fetch_biayaHidup(){
-        var getbiayaHidup = document.getElementById("get-biayaHidup").value;
-        document.getElementById("put-biayaHidup").value = getbiayaHidup;
-    }
-    function fetch_peminat(){
-        var getpeminat = document.getElementById("get-peminat").value;
-        document.getElementById("put-peminat").value = getpeminat;
-    }
+    // function fetch_minat(){
+    //     var getMinat = document.getElementById("get-minat").value;
+    //     document.getElementById("put-minat").value = getMinat;
+    // }
+    // function fetch_biayaKuliah(){
+    //     var getBiayaKuliah = document.getElementById("get-biayaKuliah").value;
+    //     document.getElementById("put-biayaKuliah").value = getBiayaKuliah;
+    // }
+    // function fetch_akreditasiKampus(){
+    //     var getakreditasiKampus = document.getElementById("get-akreditasiKampus").value;
+    //     document.getElementById("put-akreditasiKampus").value = getakreditasiKampus;
+    // }
+    // function fetch_akreditasiJurusan(){
+    //     var getakreditasiJurusan = document.getElementById("get-akreditasiJurusan").value;
+    //     document.getElementById("put-akreditasiJurusan").value = getakreditasiJurusan;
+    // }
+    // function fetch_prospekKerja(){
+    //     var getprospekKerja = document.getElementById("get-prospekKerja").value;
+    //     document.getElementById("put-prospekKerja").value = getprospekKerja;
+    // }
+    // function fetch_jenjangPendidikan(){
+    //     var getjenjangPendidikan = document.getElementById("get-jenjangPendidikan").value;
+    //     document.getElementById("put-jenjangPendidikan").value = getjenjangPendidikan;
+    // }
+    // function fetch_sulitMasuk(){
+    //     var getsulitMasuk = document.getElementById("get-sulitMasuk").value;
+    //     document.getElementById("put-sulitMasuk").value = getsulitMasuk;
+    // }
+    // function fetch_sulitLulus(){
+    //     var getsulitLulus = document.getElementById("get-sulitLulus").value;
+    //     document.getElementById("put-sulitLulus").value = getsulitLulus;
+    // }
+    // function fetch_biayaHidup(){
+    //     var getbiayaHidup = document.getElementById("get-biayaHidup").value;
+    //     document.getElementById("put-biayaHidup").value = getbiayaHidup;
+    // }
+    // function fetch_peminat(){
+    //     var getpeminat = document.getElementById("get-peminat").value;
+    //     document.getElementById("put-peminat").value = getpeminat;
+    // }
 </script>
 @endsection

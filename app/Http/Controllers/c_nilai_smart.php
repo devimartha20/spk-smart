@@ -14,6 +14,7 @@ class c_nilai_smart extends Controller
         $this->m_nilai_smart = new m_nilai_smart();
         $this->m_alternatif = new m_alternatif();
         $this->m_kriteria = new m_kriteria();
+        $this->m_bobot = new m_bobot();
     }
 
     public function index()
@@ -39,9 +40,9 @@ class c_nilai_smart extends Controller
         for($i = 0; $i < $n; $i++)
         {
             $data = [
-                "alternative_id" => $id,
-                "criteria_id" => ${"request->criteria_id".$i},
-                "nilai_awal" => ${"request->nilai_awal".$i},
+                'alternative_id' => $id,
+                'criteria_id' => ${"request->criteria_id".$i},
+                'nilai_awal' => ${"request->nilai_awal".$i},
             ];
             $this->m_nilai_smart->addData($data);
         }
@@ -64,7 +65,7 @@ class c_nilai_smart extends Controller
         {
             $criteria_id = ${"request->criteria_id".$i};
             $data = [
-                "nilai_awal" => ${"request->nilai_awal".$i},
+                'nilai_awal' => ${"request->nilai_awal".$i},
             ];
             $this->m_nilai_smart->addData($id, $criteria_id, $data);
         }
@@ -75,19 +76,41 @@ class c_nilai_smart extends Controller
     {
         $nilai_smart = $this->m_nilai_smart->allData();
         foreach ($nilai_smart as $nilai) {
-            $alternative_id = $nilai->alternative_id;
+            $id = $nilai->alternative_id;
             $criteria_id = $nilai->criteria_id;
-            $nilai_hitung = $this->m_nilai_smart->dataHitung($alternative_id, $criteria_id);
-            $a = $nilai_hitung->nilai_awal;
-            $max = $this->m_nilai_smart->dataMax($nilai_hitung->criteria_id);
-            $min = $this->m_nilai_smart->dataMin($nilai_hitung->criteria_id);
-            if ($nilai->criteria_id) {
-                # code...
+            $a = $nilai->nilai_awal;
+            $max = $this->m_nilai_smart->dataMax($criteria_id);
+            $min = $this->m_nilai_smart->dataMin($criteria_id);
+            if ($nilai->criteria_id == "Benefit") 
+            {
+                $nilai_utility = ($a-$min)/($max-$min);
+            } else
+            {
+                $nilai_utility = ($max-$a)/($max-$min);
             }
+            $data = [
+                'nilai_utility' => $nilai_utility,
+            ];
+            $this->m_nilai_smart->update($id, $criteria_id, $data);
         }
-        
-
+        return redirect()->route('smart.akhir');
     }
 
+    public function akhir()
+    {
+        $nilai_smart = $this->m_nilai_smart->allData();
+        foreach ($nilai_smart as $nilai) {
+            $id = $nilai->alternative_id;
+            $criteria_id = $nilai->criteria_id;
+            $a = $nilai->nilai_utility;
+            $bobot = $this->m_bobot->bobotCriteria($criteria_id);
+            $nilai_akhir = $a * $bobot->bobot;
+            $data = [
+                'nilai_akhir' => $nilai_akhir,
+            ];
+            $this->m_nilai_smart->update($id, $criteria_id, $data);
+        }
+        return redirect()->route('rank.store');
+    }
 
 }

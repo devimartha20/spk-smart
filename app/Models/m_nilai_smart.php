@@ -56,4 +56,6 @@ class m_nilai_smart extends Model
     {
         return  DB::table('nilai_smarts')->join('alternatives', 'alternatives.id', '=','nilai_smarts.alternative_id')->where('criteria_id', $criteria_id)->where('alternatives.user_id', Auth::user()->id)->min('nilai_awal');
     }
+
+    
 }

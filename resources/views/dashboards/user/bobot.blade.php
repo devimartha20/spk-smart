@@ -32,6 +32,23 @@
     </p>
     <hr><br>
     <form class="forms-sample">
+        @php
+            $no = 1;
+        @endphp
+        @foreach ($kriteria as $kriteria)
+        <div class="form-group">
+            <label for="{{ $kriteria->nama_kriteria }}"><h4>{{ $kriteria->nama_kriteria }}</h4></label>
+            <p class="card-secription">Seberapa penting {{ $kriteria->nama_kriteria }} terhadap jurusan yang dipilih bagi kamu?</p>
+            <input class="progress" type="range" name="bobot{{ $kriteria->nama_kriteria }}" id="get" min="1" max="10" value="1" onchange="{{ $kriteria->nama_kriteria }}()" step="1" required>
+            <input type="number" id="put" style="width:3rem;" value="1" readonly>
+            <script>
+                function (){
+                var get = document.getElementById("get").value;
+                document.getElementById("put").value = get;
+            }
+            </script>
+        </div>
+        @endforeach
 
         {{-- <div class="form-group">
             <label for="biaya"><h4>Tingkat Minat</h4></label>
@@ -102,10 +119,12 @@
 
 @section('jsContent')
 <script>
-    // function fetch_minat(){
-    //     var getMinat = document.getElementById("get-minat").value;
-    //     document.getElementById("put-minat").value = getMinat;
-    // }
+
+
+    function fetch1(){
+        var getMinat = document.getElementById("get1").value;
+        document.getElementById("put1").value = getMinat;
+    }
     // function fetch_biayaKuliah(){
     //     var getBiayaKuliah = document.getElementById("get-biayaKuliah").value;
     //     document.getElementById("put-biayaKuliah").value = getBiayaKuliah;

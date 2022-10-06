@@ -17,7 +17,7 @@ class c_kriteria extends Controller
         $kriteria = [
             'kriteria' => $this->m_kriteria->allData(),
         ];
-        return view('kriteria.v_index', $kriteria);
+        return view('dashboards.admin.kriteria', $kriteria);
     }
 
     public function create()

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\UserController;
+use App\Http\Controllers\c_bobot;
+use App\Http\Controllers\c_kriteria;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,8 +33,28 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin', 'PreventBackHistory']], function(){
     Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::resource('kriteria', c_kriteria::class,[
+        'names' => [
+            'create'=> 'kriteria.create',
+            'edit'=> 'kriteria.edit',
+            'index' => 'kriteria.index',
+            'store' => 'kriteria.store',
+            'update' => 'kriteria.update',
+            'destroy' => 'kriteria.delete'
+        ]
+    ]);
 });
 
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser','PreventBackHistory']], function(){
     Route::get('dashboard', [UserController::class, 'index'])->name('user.dashboard');
+    Route::resource('bobot', c_bobot::class,[
+        'names' => [
+            'create'=> 'bobot.create',
+            'edit'=> 'bobot.edit',
+            'index' => 'bobot.index',
+            'store' => 'bobot.store',
+            'update' => 'bobot.update',
+            'destroy' => 'bobot.delete'
+        ]
+    ]);
 });

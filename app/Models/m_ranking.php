@@ -17,9 +17,22 @@ class m_ranking extends Model
     	'hasil_akhir',  'rangking', 'alternative_id'
     ];
 
+    public function allData()
+    {
+        DB::table('rangkings')->join('alternatives', 'alternatives.id', '=','rangkings.alternative_id')->where('alternatives.user_is', Auth::user()->id)->get();
+    }
     public function addData($data)
     {
-        DB::table('nilai_smarts')->insert($data);
+        DB::table('rangkings')->insert($data);
     }
     
+    public function sortDesc()
+    {
+        return DB::table('rangkings')->join('alternatives', 'alternatives.id', '=','rangkings.alternative_id')->where('alternatives.user_is', Auth::user()->id)->orderby('hasil_akhir', 'desc')->get();
+    }
+
+    public function updateData($id, $data)
+    {
+        DB::table('rangkings')->where('id', $id)->update($data);
+    }
 }

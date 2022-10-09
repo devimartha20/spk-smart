@@ -37,6 +37,8 @@
             <label for="{{ $kriteria->nama_kriteria }}"><h4>{{ $kriteria->nama_kriteria }}</h4></label>
             <p class="card-secription">Seberapa penting {{ $kriteria->nama_kriteria }} terhadap jurusan yang dipilih bagi kamu?</p>
             <input class="progress" type="range" name="{{ $kriteria->id }}bobot" id="get{{ $kriteria->id }}" min="1" max="10" value="1" onchange="bobot{{ $kriteria->id }}()" step="1" required>
+            <input type="hidden" name="{{ $kriteria->id }}kriteria">
+
             <input type="number" id="put{{ $kriteria->id }}" style="width:3rem;" value="1" readonly>
             <script>
                 function bobot{{ $kriteria->id }}(){

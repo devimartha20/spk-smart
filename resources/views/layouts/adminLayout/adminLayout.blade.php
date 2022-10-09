@@ -42,15 +42,15 @@
             <div class="input-group">
               <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
                 <span class="input-group-text" id="search">
-                  <i class="icon-search"></i>
+                  {{-- <i class="icon-search"></i> --}}
                 </span>
               </div>
-              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+              {{-- <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search"> --}}
             </div>
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item dropdown">
+          {{-- <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="icon-bell mx-0"></i>
               <span class="count"></span>
@@ -97,7 +97,7 @@
                 </div>
               </a>
             </div>
-          </li>
+          </li> --}}
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
               <img src="{{ asset('dashTemplate/template/images/faces/face28.jpg') }}" alt="profile"/>
@@ -105,7 +105,7 @@
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
                 <i class="ti-settings text-primary"></i>
-                Settings
+                Profile
               </a>
 
               <a class="dropdown-item" href="{{ route('logout') }}"
@@ -120,11 +120,11 @@
             </form>
             </div>
           </li>
-          <li class="nav-item nav-settings d-none d-lg-flex">
+          {{-- <li class="nav-item nav-settings d-none d-lg-flex">
             <a class="nav-link" href="#">
               <i class="icon-ellipsis"></i>
             </a>
-          </li>
+          </li> --}}
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="icon-menu"></span>
@@ -324,12 +324,12 @@
 
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-        <footer class="footer">
+        {{-- <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © Kelompok SPK SMART</a> from BootstrapDash. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
           </div>
-        </footer>
+        </footer> --}}
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
@@ -338,7 +338,7 @@
   </div>
   <!-- container-scroller -->
 
-  @yield('jsContent')
+
   <!-- plugins:js -->
   <script src="{{ asset('dashTemplate/template') }}/vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
@@ -360,6 +360,7 @@
   <script src="{{ asset('dashTemplate/template') }}/js/dashboard.js"></script>
   <script src="{{ asset('dashTemplate/template') }}/js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+  @yield('jsContent')
 </body>
 
 </html>

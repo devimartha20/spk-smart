@@ -20,15 +20,15 @@ class c_kriteria extends Controller
         return view('dashboards.admin.kriteria', $kriteria);
     }
 
-    public function create()
-    {
-        return view('kriteria.v_create');
-    }
+    // public function create()
+    // {
+    //     return view('kriteria.v_create');
+    // }
 
     public function store(Request $request)
     {
         $request->validate([
-            'nama_kriteria' => 'required',
+            'nama_kriteria' => 'required|unique:criterias,nama_kriteria',
             'jenis_kriteria' => 'required',
         ]);
 
@@ -38,17 +38,17 @@ class c_kriteria extends Controller
         ];
         $this->m_kriteria->addData($data);
 
-        return redirect()->route('kriteria.index');
+        return redirect()->route('admin.kriteria.index');
     }
 
-    public function edit($id)
-    {
-        $kriteria = [
-            'kriteria' => $this->m_kriteria->detailData($id),
-        ];
+    // public function edit($id)
+    // {
+    //     $kriteria = [
+    //         'kriteria' => $this->m_kriteria->detailData($id),
+    //     ];
 
-        return view('kriteria.v_edit', $kriteria);
-    }
+    //     return view('kriteria.v_edit', $kriteria);
+    // }
 
     public function update(Request $request, $id)
     {
@@ -64,13 +64,13 @@ class c_kriteria extends Controller
 
         $this->m_kriteria->editData($id, $data);
 
-        return redirect()->route('kriteria.index');
+        return redirect()->route('admin.kriteria.index');
     }
 
     public function destroy($id)
     {
         $this->m_kriteria->deleteData($id);
 
-        return redirect()->route('kriteria.index');
+        return redirect()->route('admin.kriteria.index');
     }
 }

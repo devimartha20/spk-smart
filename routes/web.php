@@ -35,12 +35,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin', 'PreventB
     Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::resource('kriteria', c_kriteria::class,[
         'names' => [
-            'create'=> 'kriteria.create',
-            'edit'=> 'kriteria.edit',
-            'index' => 'kriteria.index',
-            'store' => 'kriteria.store',
-            'update' => 'kriteria.update',
-            'destroy' => 'kriteria.delete'
+            'index' => 'admin.kriteria.index',
+            'store' => 'admin.kriteria.store',
+            'update' => 'admin.kriteria.update',
+            'destroy' => 'admin.kriteria.delete'
         ]
     ]);
 });

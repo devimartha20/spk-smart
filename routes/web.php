@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\UserController;
+use App\Http\Controllers\c_alternatif;
 use App\Http\Controllers\c_bobot;
 use App\Http\Controllers\c_kriteria;
 use Illuminate\Support\Facades\Route;
@@ -45,14 +46,22 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin', 'PreventB
 
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser','PreventBackHistory']], function(){
     Route::get('dashboard', [UserController::class, 'index'])->name('user.dashboard');
+
     Route::resource('bobot', c_bobot::class,[
         'names' => [
-            'create'=> 'bobot.create',
-            'edit'=> 'bobot.edit',
-            'index' => 'bobot.index',
-            'store' => 'bobot.store',
-            'update' => 'bobot.update',
-            'destroy' => 'bobot.delete'
+          'index' => 'user.bobot.index',
+            'store' => 'user.bobot.store',
+            'update' => 'user.bobot.update',
+            'destroy' => 'user.bobot.delete'
+        ]
+    ]);
+
+    Route::resource('alternatif', c_alternatif::class,[
+        'names' => [
+            'index' => 'user.alternatif.index',
+            'store' => 'user.alternatif.store',
+            'update' => 'user.alternatif.update',
+            'destroy' => 'user.alternatif.delete'
         ]
     ]);
 });

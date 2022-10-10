@@ -2,13 +2,13 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="/user/dashboard">
+        <a class="nav-link" href="{{ route('user.dashboard') }}">
           <i class="icon-grid menu-icon"></i>
           <span class="menu-title">Dashboard</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/user/bobot" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link" href="{{ route('user.bobot.index') }}" aria-expanded="false" aria-controls="ui-basic">
           <i class="icon-layout menu-icon"></i>
           <span class="menu-title">Pembobotan</span>
         </a>
@@ -21,20 +21,19 @@
             <li class="nav-item"> <a class="nav-link" href="{{ asset('dashTemplate/template') }}/pages/ui-features/typography.html">Typography</a></li>
           </ul>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+      </li> --}}
+       <li class="nav-item">
+        <a class="nav-link" href="{{ route('user.alternatif.index') }}" aria-expanded="false" aria-controls="form-elements">
           <i class="icon-columns menu-icon"></i>
-          <span class="menu-title"></span>
-          <i class="menu-arrow"></i>
+          <span class="menu-title">Alternatif</span>
         </a>
-        <div class="collapse" id="form-elements">
+        {{-- <div class="collapse" id="form-elements">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"><a class="nav-link" href="{{ asset('dashTemplate/template') }}/pages/forms/basic_elements.html">Basic Elements</a></li>
           </ul>
-        </div>
+        </div> --}}
       </li>
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
           <i class="icon-bar-graph menu-icon"></i>
           <span class="menu-title">Charts</span>
@@ -101,6 +100,6 @@
           <i class="icon-paper menu-icon"></i>
           <span class="menu-title">Documentation</span>
         </a>
-      </li> --}}
+      </li>  --}}
     </ul>
   </nav>

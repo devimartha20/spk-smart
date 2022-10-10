@@ -25,6 +25,7 @@
 @endsection
 
 @section('content')
+@if ($bobot->isEmpty())
 <div class="card-body">
     <h4 class="card-title">Seberapa penting kriteria ini untuk kamu?</h4>
     <p class="card-description">
@@ -53,6 +54,10 @@
       <button class="btn btn-light">Cancel</button>
     </form>
   </div>
+@else
+
+@endif
+
 @endsection
 
 @section('jsContent')

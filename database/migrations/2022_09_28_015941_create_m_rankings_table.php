@@ -18,7 +18,7 @@ return new class extends Migration
             $table->float('hasil_akhir', 5, 3);
             $table->integer('ranking')->nullable();
             $table->unsignedBigInteger('alternative_id');
-            $table->foreign('alternative_id')->references('id')->on('alternatives');
+            $table->foreign('alternative_id')->references('id')->on('alternatives')->onDelete('cascade');
             $table->timestamps();
         });
     }

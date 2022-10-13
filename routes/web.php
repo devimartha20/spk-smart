@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\c_alternatif;
 use App\Http\Controllers\c_bobot;
 use App\Http\Controllers\c_kriteria;
+use App\Http\Controllers\c_user;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +41,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin', 'PreventB
             'store' => 'admin.kriteria.store',
             'update' => 'admin.kriteria.update',
             'destroy' => 'admin.kriteria.delete'
+        ]
+    ]);
+
+    Route::resource('kelolaUser', c_user::class,[
+        'names' => [
+            'index' => 'admin.user.index',
+            'store' => 'admin.user.store',
+            'update' => 'admin.user.update',
+            'destroy' => 'admin.user.delete'
         ]
     ]);
 });

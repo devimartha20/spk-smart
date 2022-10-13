@@ -11,7 +11,7 @@ class m_ranking extends Model
 {
     use HasFactory;
 
-    public $table = 'rangkings';
+    public $table = 'rankings';
 
     protected $fillable = [
     	'hasil_akhir',  'rangking', 'alternative_id'
@@ -19,20 +19,20 @@ class m_ranking extends Model
 
     public function allData()
     {
-        DB::table('rangkings')->join('alternatives', 'alternatives.id', '=','rangkings.alternative_id')->where('alternatives.user_is', Auth::user()->id)->get();
+        DB::table('rankings')->join('alternatives', 'alternatives.id', '=','rankings.alternative_id')->where('alternatives.user_is', Auth::user()->id)->get();
     }
     public function addData($data)
     {
-        DB::table('rangkings')->insert($data);
+        DB::table('rankings')->insert($data);
     }
-    
+
     public function sortDesc()
     {
-        return DB::table('rangkings')->join('alternatives', 'alternatives.id', '=','rangkings.alternative_id')->where('alternatives.user_is', Auth::user()->id)->orderby('hasil_akhir', 'desc')->get();
+        return DB::table('rankings')->join('alternatives', 'alternatives.id', '=','rankings.alternative_id')->where('alternatives.user_is', Auth::user()->id)->orderby('hasil_akhir', 'desc')->get();
     }
 
     public function updateData($id, $data)
     {
-        DB::table('rangkings')->where('id', $id)->update($data);
+        DB::table('rankings')->where('id', $id)->update($data);
     }
 }

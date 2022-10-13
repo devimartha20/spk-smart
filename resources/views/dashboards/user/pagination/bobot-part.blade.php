@@ -1,7 +1,5 @@
-@extends('layouts.userLayout.userLayout')
 
-@section('cssContent')
-<style>
+    <style>
 .progress {
   background: linear-gradient(to right, #82CFD0 0%, #82CFD0 40%, #fff 40%, #fff 100%);
   border: solid 2px #82CFD0;
@@ -22,10 +20,6 @@
 
 </style>
 
-@endsection
-
-@section('content')
-@if ($bobot->isEmpty())
 <div class="card-body">
     <h4 class="card-title">Seberapa penting kriteria ini untuk kamu?</h4>
     <p class="card-description">
@@ -50,45 +44,7 @@
         </div>
         @endforeach
 
-      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+      <button type="submit" class="btn btn-primary mr-2">Next</button>
       <button class="btn btn-light">Cancel</button>
     </form>
   </div>
-@else
-    <div class="div table-responsive">
-        <div class="div table table-striped">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Kritria</th>
-                    <th>Point</th>
-                    <th>Bobot</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php
-                    $no = 1;
-                @endphp
-                @foreach ($bobot as $bobot)
-                    <tr>
-                        <td class="py-1">{{ $no++ }}</td>
-                        <td>{{ $bobot->Kriteria->nama_kriteria }}</td>
-                        <td>{{ $bobot->point }}</td>
-                        <td>{{ $bobot->bobot }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </div>
-    </div>
-@endif
-
-@endsection
-
-@section('jsContent')
-<script>
-
-
-
-</script>
-@endsection

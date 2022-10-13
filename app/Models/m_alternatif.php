@@ -14,36 +14,44 @@ class m_alternatif extends Model
     public $table = 'alternatives';
 
     protected $fillable = [
-    	'id', 'nama_alternatif', 'user_id'
+    	'id', 'nama_alternatif', 'nama_kampus', 'user_id', 'created_at', 'updated_at',
     ];
 
+//Definisi Relasi tabel
+    public function User(){
+        return $this->belongsTo(User::class);
+    }
+
+//CRUD
     public function allData()
     {
-        return DB::table('alternatives')->join('users', 'users.id', '=','alternatives.user_id')->where('alternatives.user_id', Auth::user()->id)->get();
+        return m_alternatif::with('User')->where('user_id', Auth::user()->id)->get();
     }
 
     public function detailData($id)
     {
-        return  DB::table('alternatives')->join('users', 'users.id', '=','alternatives.user_id')->where('id', $id)->first();
+        return m_alternatif::with('User')->where('user_id', Auth::user()->id)->where('id', $id)->first();
     }
 
     public function addData($data)
     {
-        DB::table('alternatives')->insert($data);
+        m_alternatif::with('User')->insert($data);
     }
 
     public function editData($id, $data)
     {
-        DB::table('alternatives')->where('id', $id)->update($data);
+        m_alternatif::with('User')->where('id', $id)->update($data);
     }
 
     public function deleteData($id)
     {
-        DB::table('alternatives')->where('id', $id)->delete();
+        m_alternatif::with('User')->where('id', $id)->delete();
     }
 
     public function jumlahData()
     {
-        DB::table('alternatives')->where('user_id', Auth::user()->id)->count();
+        m_alternatif::with('User')->where('user_id', Auth::user()->id)->count();
     }
+
+
 }

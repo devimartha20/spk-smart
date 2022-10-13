@@ -8,10 +8,18 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin/kriteria" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link"  href="{{ route('admin.user.index') }}" aria-expanded="false" aria-controls="form-elements">
+          <i class="icon-columns menu-icon"></i>
+          <span class="menu-title">User</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.kriteria.index') }}" aria-expanded="false" aria-controls="ui-basic">
           <i class="icon-layout menu-icon"></i>
           <span class="menu-title">Kriteria</span>
         </a>
+      </li>
+
         {{-- <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{ asset('dashTemplate/template') }}/pages/ui-features/buttons.html">Buttons</a></li>

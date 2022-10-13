@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\m_alternatif;
+use Illuminate\Support\Facades\Auth;
 
 class c_alternatif extends Controller
 {
@@ -29,16 +30,18 @@ class c_alternatif extends Controller
     {
         $request->validate([
             'nama_alternatif' => 'required',
+            'nama_kampus' => 'required',
             'user_id' => 'required',
         ]);
 
         $data = [
             'nama_alternatif' => $request->nama_alternatif,
+            'nama_kampus' => $request->nama_kampus,
             'user_id' => $request->user_id,
         ];
         $this->m_alternatif->addData($data);
 
-        return redirect()->route('user.alternatif.index');
+        return redirect()->back();
     }
 
     // public function edit($id)
@@ -54,23 +57,25 @@ class c_alternatif extends Controller
     {
         $request->validate([
             'nama_alternatif' => 'required',
+            'nama_kampus' => 'required'
             // 'user_id' => 'required',
         ]);
 
         $data = [
             'nama_alternatif' => $request->nama_alternatif,
+            'nama_kampus' => $request->nama_kampus,
             // 'user_id' => $request->user_id,
         ];
 
         $this->m_alternatif->editData($id, $data);
 
-        return redirect()->route('user.alternatif.index');
+        return redirect()->back();
     }
 
     public function destroy($id)
     {
         $this->m_alternatif->deleteData($id);
 
-        return redirect()->route('user.alternatif.index');
+        return redirect()->back();
     }
 }

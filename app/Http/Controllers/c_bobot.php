@@ -45,7 +45,7 @@ class c_bobot extends Controller
         ];
         $this->m_bobot->addData($data);
 
-        return redirect()->route('bobot.index');
+        return redirect()->back();
     }
 
     public function edit($id)
@@ -73,13 +73,13 @@ class c_bobot extends Controller
 
         $this->m_bobot->editData($id, $data);
 
-        return redirect()->route('bobot.index');
+        return redirect()->back();
     }
 
     public function destroy($id)
     {
         $this->m_bobot->deleteData($id);
 
-        return redirect()->route('bobot.index');
+        return redirect()->back();
     }
 }

@@ -32,10 +32,10 @@
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo">
-                <img src="{{ asset('dashTemplate/template') }}/images/logo.svg" alt="logo">
+                <img src="{{ asset('dashTemplate/template') }}/images/smart.jpg" alt="logo">
               </div>
               <h4>Hello! Ayo kita mulai!</h4>
-              <h6 class="font-weight-light">Register untuk melanjutkan</h6>
+              <h6 class="font-weight-light">Login untuk Memulai</h6>
               <form class="pt-3" method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group">

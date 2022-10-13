@@ -1,37 +1,31 @@
 @extends('layouts.userLayout.userLayout')
 
-@section('cssContent')
-<style>
-.progress {
-  background: linear-gradient(to right, #82CFD0 0%, #82CFD0 40%, #fff 40%, #fff 100%);
-  border: solid 2px #82CFD0;
-  border-radius: 8px;
-  height: 7px;
-  width: 400px;
-  outline: none;
-  transition: background 450ms ease-in;
-
-}
-
-.progress::-webkit-slider-thumb {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #434343;
-}
-
-</style>
-
-@endsection
-
 @section('content')
+        {{-- case belum input bobot --}}
+        @if ($bobot->isEmpty())
+        <h2>Kamu belum mengisi pembobotan</h2>
+        <hr>
+            @include('dashboards.user.pagination.bobot-part')
 
+        {{-- case sudah ada bobot belum ada alternatif --}}
+        @elseif ($alternatif->isEmpty())
+        <h2>Kamu belum menentukan alternatif</h2>
+        <hr>
+            @include('dashboards.user.pagination.alternatif-part')
 
+        {{-- case bobot dan alternatif sudah ada tapi belum input nilai --}}
+        @elseif($nilai->isEmpty())
+        <h2>Kamu belum mengisi penilaian</h2>
+        <hr>
+         @include('dashboards.user.pagination.nilai-part')
+
+        {{-- case sudah melakukan semua proses --}}
+        @else
+        <h2>Hasil Ranking Alternatif</h2>
+        <hr>
+            @include('dashboards.user.pagination.smart-part')
+        @endif
 
 @endsection
 
-@section('jsContent')
-<script>
 
-</script>
-@endsection

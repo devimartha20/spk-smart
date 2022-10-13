@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('alternative_id');
             $table->unsignedBigInteger('criteria_id');
             $table->primary(['alternative_id', 'criteria_id']);
-            $table->foreign('alternative_id')->references('id')->on('alternatives');
-            $table->foreign('criteria_id')->references('id')->on('criterias');
+            $table->foreign('alternative_id')->references('id')->on('alternatives')->onDelete('cascade');
+            $table->foreign('criteria_id')->references('id')->on('criterias')->onDelete('cascade');
             $table->float('nilai_awal', 5, 3);
             $table->float('nilai_utility', 5, 3)->nullable();
             $table->float('nilai_akhir', 5, 3)->nullable();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\m_nilai_smart;
 use App\Models\m_alternatif;
+use App\Models\m_bobot;
 use App\Models\m_kriteria;
 use Illuminate\Http\Request;
 
@@ -34,8 +35,8 @@ class c_nilai_smart extends Controller
     }
 
     public function store(Request $request, $id)
-    {   
-        $n = $this->m_kriteria-jumlahData();
+    {
+        $n = $this->m_kriteria->jumlahData();
 
         for($i = 0; $i < $n; $i++)
         {
@@ -59,7 +60,7 @@ class c_nilai_smart extends Controller
 
     public function update(Request $request, $id)
     {
-        $n = $this->m_kriteria-jumlahData();
+        $n = $this->m_kriteria->jumlahData();
 
         for($i = 0; $i < $n; $i++)
         {
@@ -81,7 +82,7 @@ class c_nilai_smart extends Controller
             $a = $nilai->nilai_awal;
             $max = $this->m_nilai_smart->dataMax($criteria_id);
             $min = $this->m_nilai_smart->dataMin($criteria_id);
-            if ($nilai->criteria_id == "Benefit") 
+            if ($nilai->criteria_id == "Benefit")
             {
                 $nilai_utility = ($a-$min)/($max-$min);
             } else

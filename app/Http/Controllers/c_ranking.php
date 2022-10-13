@@ -27,7 +27,7 @@ class c_ranking extends Controller
     {
         $alternative = $this->m_alternatif->allData();
 
-        foreach ($alternative as $data1) 
+        foreach ($alternative as $data1)
         {
             $alternative_id = $data1->id;
             $hasil_akhir = $this->m_nilai_smart->hasilData($alternative_id);
@@ -45,12 +45,12 @@ class c_ranking extends Controller
     {
         $akhir = $this->m_ranking->sortDesc();
 
-        foreach ($akhir as $hakhir) 
+        foreach ($akhir as $hakhir)
         {
             $id = $akhir->id;
             $ranking = 1;
             $data = [
-                'rangking' => $rangking,
+                'rangking' => $ranking,
             ];
             $this->m_ranking->updateData($id, $data);
         }

@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('bobots', function (Blueprint $table) {
             $table->id();
-            $table->float('bobot', 5, 3);
+            $table->integer('point');
+            $table->float('bobot', 5, 3)->nullable();
             $table->unsignedBigInteger('criteria_id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('criteria_id')->references('id')->on('criterias');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('criteria_id')->references('id')->on('criterias')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

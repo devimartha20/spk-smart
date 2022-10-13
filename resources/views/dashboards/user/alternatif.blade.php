@@ -18,7 +18,8 @@
         <thead>
           <tr>
             <th>No</th>
-            <th>Alternatif</th>
+            <th>Jurusan</th>
+            <th>Kampus</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -29,7 +30,8 @@
             @foreach ($alternatif as $alternatif)
                 <tr>
                     <td class="py-1">{{ $no++ }}</td>
-                    <td>{{ $alternatif->id }}</td>
+                    <td>{{ $alternatif->nama_alternatif }}</td>
+                    <td>{{ $alternatif->nama_kampus }}</td>
                     <td>
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editalternatif-{{ $alternatif->id }}">Edit</button>
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deletealternatif-{{ $alternatif->id }}">Hapus</button>
@@ -52,10 +54,14 @@
                                 @csrf
                                 <input type="hidden" name="_method" value="PUT">
                                 <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Nama alternatif:</label>
-                                <input type="text" class="form-control" id="nama-alternatif" name="nama_alternatif" placeholder="Nama alternatif" value="{{ $alternatif->nama_alternatif }}" required>
+                                    <label for="nama-alternatif" class="col-form-label">Nama Jurusan:</label>
+                                    <input type="text" class="form-control" id="nama-alternatif" name="nama_alternatif" placeholder="Nama Jurusan" value="{{ $alternatif->nama_alternatif }}" required>
                                 </div>
-                                {{-- <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"> --}}
+                                <div class="form-group">
+                                    <label for="nama-kampus" class="col-form-label">Nama Kampus:</label>
+                                    <input type="text" class="form-control" id="nama-kampus" name="nama_kampus" placeholder="Nama Kampus" value="{{ $alternatif->nama_kampus }}" required>
+                                    </div>
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -80,11 +86,11 @@
                                 <form action="{{ route('user.alternatif.delete', $alternatif->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <h5 class="text-center">Apakah Anda yakin untuk menghapus alternatif {{ $alternatif->nama_alternatif }}?</h5>
+                                    <h5 class="text-center">Apakah Anda yakin untuk menghapus alternatif jurusan <b>{{ $alternatif->nama_alternatif }}</b> di kampus <b>{{ $alternatif->nama_kampus }}</b>?</h5>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn btn-sm btn-danger">Ya, Hapus alternatif</button>
+                                    <button type="submit" class="btn btn-danger">Ya, Hapus alternatif</button>
                                 </div>
                                 </form>
                             </div>
@@ -112,8 +118,12 @@
             @csrf
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Pilihan Jurusan :</label>
-              <input type="text" class="form-control" id="nama-alternatif" name="nama_alternatif" placeholder="Nama alternatif" required>
+              <input type="text" class="form-control" id="nama-alternatif" name="nama_alternatif" placeholder="Nama Jurusan" required>
             </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Pilihan Kampus :</label>
+                <input type="text" class="form-control" id="nama-kampus" name="nama_kampus" placeholder="Nama Kampus" required>
+              </div>
             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
         </div>
         <div class="modal-footer">

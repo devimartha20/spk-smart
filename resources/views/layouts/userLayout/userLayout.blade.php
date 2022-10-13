@@ -30,14 +30,14 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="{{ asset('dashTemplate/template/index.html') }}"><img src="{{ asset('dashTemplate/template/images/logo.svg') }}" class="mr-2" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="{{ asset('dashTemplate/template/index.html') }}"><img src="{{ asset('dashTemplate/template/images/logo-mini.svg') }}" alt="logo"/></a>
+        <a class="navbar-brand brand-logo mr-5" ><img src="{{ asset('dashTemplate/template/images/smart.jpg') }}" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" ><img src="{{ asset('dashTemplate/template/images/smart-mini.jpg') }}" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
           <span class="icon-menu"></span>
         </button>
-        <ul class="navbar-nav mr-lg-2">
+        {{-- <ul class="navbar-nav mr-lg-2">
           <li class="nav-item nav-search d-none d-lg-block">
             <div class="input-group">
               <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
@@ -48,14 +48,14 @@
               <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
             </div>
           </li>
-        </ul>
+        </ul> --}}
         <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item dropdown">
+          {{-- <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="icon-bell mx-0"></i>
               <span class="count"></span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
               <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
@@ -97,7 +97,7 @@
                 </div>
               </a>
             </div>
-          </li>
+          </li> --}}
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
               <img src="{{ asset('dashTemplate/template/images/faces/face28.jpg') }}" alt="profile"/>
@@ -120,11 +120,11 @@
             </form>
             </div>
           </li>
-          <li class="nav-item nav-settings d-none d-lg-flex">
+          {{-- <li class="nav-item nav-settings d-none d-lg-flex">
             <a class="nav-link" href="#">
               <i class="icon-ellipsis"></i>
             </a>
-          </li>
+          </li> --}}
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="icon-menu"></span>
@@ -324,12 +324,12 @@
 
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-        <footer class="footer">
+        {{-- <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
           </div>
-        </footer>
+        </footer> --}}
         <!-- partial -->
       </div>
       <!-- main-panel ends -->

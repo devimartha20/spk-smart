@@ -164,7 +164,7 @@ class c_nilai_smart extends Controller
         $ranking = 0;
         foreach ($akhir as $akhir)
         {
-            $id = $akhir->m_alternative_id;
+            $id = $akhir->m_alternatif_id;
             $ranking = $ranking + 1;
             $data = [
                 'rangking' => $ranking,

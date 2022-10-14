@@ -22,7 +22,11 @@
                     <tr>
                         <td>{{ $alternatif->nama_alternatif }}</td>
                         @foreach ($kriteria as $krtieria)
-                            <td>input nilai</td>
+                            <td>
+                                <form action="{{ route('user.smart.store') }}" method="post">
+                                    <input type="number" name="{{ $kriteria->id }}nilai_awal" id="">
+                                </form>
+                            </td>
                         @endforeach
                     </tr>
                 @endforeach

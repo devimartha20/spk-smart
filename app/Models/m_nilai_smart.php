@@ -17,6 +17,18 @@ class m_nilai_smart extends Model
     	'alternative_id', 'criteria_id', 'nilai_awal', 'nilai_utility', 'nilai_akhir'
     ];
 
+    public function User(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function Kriteria(){
+        return $this->hasOne(m_kriteria::class);
+    }
+
+    public function Alternatif(){
+        return $this->hasOne(m_alternatif::class);
+    }
+
     public function allData()
     {
         return DB::table('nilai_smarts')->join('alternatives', 'alternatives.id', '=','nilai_smarts.alternative_id')->join('criterias', 'criterias.id', '=','nilai_smarts.criteria_id')->where('alternatives.user_id', Auth::user()->id)->get();

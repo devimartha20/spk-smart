@@ -20,7 +20,10 @@ class c_ranking extends Controller
 
     public function index()
     {
-
+        $ranking = [
+            'rangking' => $this->m_ranking->allData(),
+        ];
+        return view('v_hasil', $rangking);
     }
 
     public function store()
@@ -54,5 +57,6 @@ class c_ranking extends Controller
             ];
             $this->m_ranking->updateData($id, $data);
         }
+        return redirect()->route('rank.index');
     }
 }

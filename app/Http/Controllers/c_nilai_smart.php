@@ -115,15 +115,14 @@ class c_nilai_smart extends Controller
     {
         $nilai_smart = $this->m_nilai_smart->allData();
         foreach ($nilai_smart as $nilai) {
-            $id = $nilai->m_alternatif_id;
+            $m_alternatif_id = $nilai->m_alternatif_id;
             $criteria_id = $nilai->m_kriteria_id;
+            $m_kriteria_id = $criteria_id;
             $a = $nilai->nilai_utility;
             $bobot = $this->m_bobot->bobotCriteria($criteria_id);
-            $nilai_akhir = $a * $bobot->bobot;
-            $data = [
-                'nilai_akhir' => $nilai_akhir,
-            ];
-            $this->m_nilai_smart->update($id, $criteria_id, $data);
+            $nilai_akhir = $a * $bobot;
+            
+            $this->m_nilai_smart->nilaiakhir($m_alternatif_id, $m_kriteria_id, $nilai_akhir);
         }
         return redirect()->route('smart.create');
     }

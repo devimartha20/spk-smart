@@ -51,6 +51,11 @@ class m_nilai_smart extends Model
         DB::table('m_nilai_smarts')->where('m_alternatif_id', $m_alternatif_id)->where('m_kriteria_id', $m_kriteria_id)->update($data);
     }
 
+    public function nilaiakhir($m_alternatif_id, $m_kriteria_id, $nilai_akhir)
+    {
+        DB::table('m_nilai_smarts')->where('m_alternatif_id', $m_alternatif_id)->where('m_kriteria_id', $m_kriteria_id)->update(['nilai_akhir' => $nilai_akhir]);
+    }
+
     public function utility($m_alternatif_id, $m_kriteria_id, $nilai_utility)
     {
         DB::table('m_nilai_smarts')->where('m_alternatif_id', $m_alternatif_id)->where('m_kriteria_id', $m_kriteria_id)->update(['nilai_utility' => $nilai_utility]);
@@ -78,6 +83,6 @@ class m_nilai_smart extends Model
 
     public function hasilData($m_alternatif_id)
     {
-        return  DB::table('m_nilai_smarts')->join('m_alternatifs', 'm_alternatifs.id', '=','m_nilai_smarts.m_alternatif_id')->where('alternativ_id', $m_alternatif_id)->where('m_alternatifs.user_id', Auth::user()->id)->sum('nilai_akhir');
+        return  DB::table('m_nilai_smarts')->join('m_alternatifs', 'm_alternatifs.id', '=','m_nilai_smarts.m_alternatif_id')->where('m_alternatif_id', $m_alternatif_id)->where('m_alternatifs.user_id', Auth::user()->id)->sum('nilai_akhir');
     }
 }

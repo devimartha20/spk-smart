@@ -167,7 +167,7 @@ class c_nilai_smart extends Controller
             $id = $akhir->m_alternatif_id;
             $ranking = $ranking + 1;
             $data = [
-                'rangking' => $ranking,
+                'ranking' => $ranking,
             ];
             $this->m_ranking->updateData($data, $id);
         }

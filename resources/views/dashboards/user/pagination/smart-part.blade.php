@@ -1,5 +1,5 @@
 @extends('layouts.userLayout.userLayout')
-@section('content')
+@section('cssContent')
 
 @endsection
 @section('content')

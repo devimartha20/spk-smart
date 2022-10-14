@@ -14,7 +14,7 @@ class m_ranking extends Model
     public $table = 'm_rankings';
 
     protected $fillable = [
-    	'hasil_akhir',  'rangking', 'm_alternatif_id'
+    	'hasil_akhir',  'ranking', 'm_alternatif_id'
     ];
 
     // relasi

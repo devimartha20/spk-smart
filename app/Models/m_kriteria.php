@@ -47,6 +47,6 @@ class m_kriteria extends Model
 
     public function jumlahData()
     {
-        DB::table('m_kriterias')->count();
+       return DB::table('m_kriterias')->count();
     }
 }

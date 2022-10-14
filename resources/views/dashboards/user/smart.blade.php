@@ -4,7 +4,12 @@
 @endsection
 
 @section('content')
-@if ($nilai_smart->isEmpty())
+
+@if($alternatif->isEmpty())
+<h2>Kamu belum mengisi Alternatif</h2>
+<a href="{{ route('user.alternatif.index') }}"><button>Isi Alternatif</button></a>
+<hr>
+@elseif ($nilai_smart->isEmpty())
  {{-- form input nilai awal --}}
 <table>
     <thead>

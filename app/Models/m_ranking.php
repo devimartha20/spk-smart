@@ -37,7 +37,7 @@ class m_ranking extends Model
 
     public function cekData($id)
     {
-        return m_ranking::with('Alternatif')->where('m_alternatif_id', $id)->get();
+        return m_ranking::with('Alternatif')->where('m_alternatif_id', $id)->first();
     }
     public function updateData($data, $id)
     {

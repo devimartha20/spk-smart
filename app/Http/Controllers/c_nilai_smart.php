@@ -98,7 +98,7 @@ class c_nilai_smart extends Controller
             $a = $nilai->nilai_awal;
             $max = $this->m_nilai_smart->dataMax($m_kriteria_id);
             $min = $this->m_nilai_smart->dataMin($m_kriteria_id);
-            if ($nilai->jenis_kriteria == "Benefit")
+            if ($nilai->jenis_kriteria == "benefit")
             {
                 $nilai_utility = ($a-$min)/($max-$min);
             } else

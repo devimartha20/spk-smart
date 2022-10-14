@@ -46,9 +46,14 @@ class m_nilai_smart extends Model
         DB::table('m_nilai_smarts')->insert($data);
     }
 
-    public function editData($id, $m_kriteria_id, $data)
+    public function editData($m_alternatif_id, $m_kriteria_id, $data)
     {
-        DB::table('m_nilai_smarts')->where('m_alternatif_id', $id)->where('m_kriteria_id', $m_kriteria_id)->update($data);
+        DB::table('m_nilai_smarts')->where('m_alternatif_id', $m_alternatif_id)->where('m_kriteria_id', $m_kriteria_id)->update($data);
+    }
+
+    public function utility($m_alternatif_id, $m_kriteria_id, $nilai_utility)
+    {
+        DB::table('m_nilai_smarts')->where('m_alternatif_id', $m_alternatif_id)->where('m_kriteria_id', $m_kriteria_id)->update(['nilai_utility' => $nilai_utility]);
     }
 
     public function deleteData($m_alternatif_id, $m_kriteria_id)

@@ -20,14 +20,10 @@ class c_nilai_smart extends Controller
 
     public function index()
     {
-        $nilai_smart = [
+        $data= [
             'nilai_smart' => $this->m_nilai_smart->allData(),
-        ];
-        $kriteria = [
-            'kriteria' => $this->m_kriteria->allData()
-        ];
-        $alternatif = [
-            'alternatif' => $this->m_alternatif->allData()
+            'kriteria' => $this->m_kriteria->allData(),
+            'alternatif' => $this->m_alternatif->allData(),
         ];
 
         return view('dashboards.user.smart', $nilai_smart, $kriteria, $alternatif );

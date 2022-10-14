@@ -99,10 +99,10 @@
                                 <div class="form-group">
                                     <label for="{{ $bobot->Kriteria->id }}"><h4>{{ $bobot->Kriteria->nama_kriteria }}</h4></label>
                                     <p class="card-secription">Seberapa penting {{ $bobot->Kriteria->nama_kriteria }} terhadap jurusan yang dipilih bagi kamu?</p>
-                                    <input class="progress" type="range" name="point" id="get{{ $bobot->Kriteria->id }}" min="1" max="10" value="1" onchange="bobot{{ $bobot->Kriteria->id }}()" step="1" required>
+                                    <input class="progress" type="range" name="point" id="get{{ $bobot->Kriteria->id }}" min="1" max="10" value="{{ $bobot->point }}" onchange="bobot{{ $bobot->Kriteria->id }}()" step="1" required>
                                     <input type="hidden" name="{{ $bobot->Kriteria->id }}kriteria">
 
-                                    <input type="number" id="put{{ $bobot->Kriteria->id }}" style="width:3rem;" value="1" readonly>
+                                    <input type="number" id="put{{ $bobot->Kriteria->id }}" style="width:3rem;" value="{{ $bobot->point }}" readonly>
                                     <script>
                                         function bobot{{ $bobot->Kriteria->id }}(){
                                         var get = document.getElementById("get{{ $bobot->Kriteria->id }}").value;

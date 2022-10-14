@@ -53,6 +53,11 @@ class m_bobot extends Model
         m_bobot::with('User')->where('id', $id)->delete();
     }
 
+    public function jumlah()
+    {
+        return  m_bobot::with('User')->where('id', $id)->sum('point')->get();
+    }
+
     public function bobotCriteria($criteria_id)
     {
         m_bobot::with('User', 'Kriteria')->where('user_id', Auth::user()->id)->where('criteria_id', $criteria_id)->get();

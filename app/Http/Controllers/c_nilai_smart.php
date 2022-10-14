@@ -6,6 +6,7 @@ use App\Models\m_nilai_smart;
 use App\Models\m_alternatif;
 use App\Models\m_bobot;
 use App\Models\m_kriteria;
+use App\Models\m_ranking;
 use Illuminate\Http\Request;
 
 class c_nilai_smart extends Controller
@@ -16,6 +17,7 @@ class c_nilai_smart extends Controller
         $this->m_alternatif = new m_alternatif();
         $this->m_kriteria = new m_kriteria();
         $this->m_bobot = new m_bobot();
+        $this->m_ranking = new m_ranking();
     }
 
     public function index()

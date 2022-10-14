@@ -28,6 +28,7 @@ class c_nilai_smart extends Controller
             'alternatif' => $this->m_alternatif->allData(),
             'jKriteria' => $this->m_kriteria->jumlahData(),
             'ranking' => $this->m_ranking->allData(),
+            'bobot' => $this->m_bobot->allData(),
         ];
 
         return view('dashboards.user.smart', $data );
@@ -104,7 +105,7 @@ class c_nilai_smart extends Controller
             {
                 $nilai_utility = ($max-$a)/($max-$min);
             }
-            
+
             $this->m_nilai_smart->utility($m_alternatif_id, $m_kriteria_id, $nilai_utility);
         }
         return redirect('/user/akhir/');

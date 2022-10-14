@@ -24,11 +24,11 @@ class m_nilai_smart extends Model
     }
 
     public function Kriteria(){
-        return $this->hasOne('App\Models\m_kriteria', 'm_kriteria_id');
+        return $this->belongsTo('App\Models\m_kriteria', 'm_kriteria_id');
     }
 
     public function Alternatif(){
-        return $this->hasOne('App\Models\m_alternatif', 'm_alternatif_id');
+        return $this->belongsTo('App\Models\m_alternatif', 'm_alternatif_id');
     }
 
     public function allData()

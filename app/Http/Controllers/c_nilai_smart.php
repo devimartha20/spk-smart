@@ -120,8 +120,7 @@ class c_nilai_smart extends Controller
             $m_kriteria_id = $criteria_id;
             $a = $nilai->nilai_utility;
             $bobot = $this->m_bobot->bobotCriteria($criteria_id);
-            $nilai_akhir = $a * $bobot;
-
+            $nilai_akhir = $a * $bobot->bobot;
             $this->m_nilai_smart->nilaiakhir($m_alternatif_id, $m_kriteria_id, $nilai_akhir);
         }
         return redirect()->route('user.rank.create');
@@ -145,7 +144,6 @@ class c_nilai_smart extends Controller
             //     $this->m_ranking->updateData1($id, $$data);
             // } else {
                 $m_alternatif_id = $data1->id;
-                $id = $m_alternatif_id;
                 $hasil_akhir = $this->m_nilai_smart->hasilData($m_alternatif_id);
                 $data = [
                     'hasil_akhir' => $hasil_akhir,
@@ -171,7 +169,7 @@ class c_nilai_smart extends Controller
             ];
             $this->m_ranking->updateData($data, $id);
         }
-        return redirect()->route('smart.index');
+        return redirect()->route('user.smart.index');
     }
 
 }

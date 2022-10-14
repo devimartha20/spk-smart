@@ -137,18 +137,18 @@ class c_nilai_smart extends Controller
         {
             $cek = $this->m_ranking->cekData();
             if ($cek->hasil_akhir <> null) {
-                $id = $data1->id;
-                $hasil_akhir = $this->m_nilai_smart->hasilData($alternative_id);
+                $m_alternatif_id = $data1->id;
+                $hasil_akhir = $this->m_nilai_smart->hasilData($m_alternatif_id);
                 $data = [
                     'hasil_akhir' => $hasil_akhir,
                 ];
                 $this->m_ranking->updateData1($id, $$data);
             } else {
-                $alternative_id = $data1->id;
-                $hasil_akhir = $this->m_nilai_smart->hasilData($alternative_id);
+                $m_alternatif_id = $data1->id;
+                $hasil_akhir = $this->m_nilai_smart->hasilData($m_alternatif_id);
                 $data = [
                     'hasil_akhir' => $hasil_akhir,
-                    'm_alternative_id' => $alternative_id,
+                    'm_alternative_id' => $m_alternatif_id,
                 ];
                 $this->m_ranking->addData($data);
             }

@@ -120,8 +120,7 @@ class c_nilai_smart extends Controller
             $m_kriteria_id = $criteria_id;
             $a = $nilai->nilai_utility;
             $bobot = $this->m_bobot->bobotCriteria($criteria_id);
-            $nilai_akhir = $a * $bobot;
-
+            $nilai_akhir = $a * $bobot->bobot;
             $this->m_nilai_smart->nilaiakhir($m_alternatif_id, $m_kriteria_id, $nilai_akhir);
         }
         return redirect()->route('user.rank.create');
@@ -134,25 +133,25 @@ class c_nilai_smart extends Controller
 
         foreach ($alternative as $data1)
         {
-            // $cek = $this->m_ranking->cekData();
-            // if ($cek->hasil_akhir <> null) {
-            //     $m_alternatif_id = $data1->id;
-            //     $id = $m_alternatif_id;
-            //     $hasil_akhir = $this->m_nilai_smart->hasilData($m_alternatif_id);
-            //     $data = [
-            //         'hasil_akhir' => $hasil_akhir,
-            //     ];
-            //     $this->m_ranking->updateData1($id, $$data);
-            // } else {
+            $id = $data1->id;
+            $cek = $this->m_ranking->cekData($id);
+            if ($cek->hasil_akhir <> null) {
                 $m_alternatif_id = $data1->id;
                 $id = $m_alternatif_id;
+                $hasil_akhir = $this->m_nilai_smart->hasilData($m_alternatif_id);
+                $data = [
+                    'hasil_akhir' => $hasil_akhir,
+                ];
+                $this->m_ranking->updateData($data, $id);
+            } else {
+                $m_alternatif_id = $data1->id;
                 $hasil_akhir = $this->m_nilai_smart->hasilData($m_alternatif_id);
                 $data = [
                     'hasil_akhir' => $hasil_akhir,
                     'm_alternatif_id' => $m_alternatif_id,
                 ];
                 $this->m_ranking->addData($data);
-        //     }
+            }
         }
         return redirect()->route('user.rank.store');
 

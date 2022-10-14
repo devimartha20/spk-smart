@@ -73,20 +73,13 @@ class c_bobot extends Controller
     //     return view('bobot.v_edit', $bobot);
     // }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $kriteria = $this->m_kriteria->allData();
-        foreach ($kriteria as $data1) {
-
         $data = [
-            'point' => ${"request->".$data1->id."point"},
-            'm_kriteria_id' => $data1->id,
-            'user_id' => Auth::user()->id,
+            'point' => $request->point,
         ];
-        $this->m_bobot->editData($data);
-        }
-
-        return redirect()->route('user.bobot.bobot');
+        $this->m_bobot->editData($id, $data);
+        return redirect('/user/bobothitung');
     }
 
     public function destroy($id)

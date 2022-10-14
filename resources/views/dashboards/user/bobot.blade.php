@@ -74,10 +74,51 @@
                 @foreach ($bobot as $bobot)
                     <tr>
                         <td class="py-1">{{ $no++ }}</td>
-                         <td>{{ $bobot->Kriteria }}</td>
+                         <td>{{ $bobot->Kriteria->nama_kriteria }}</td>
                         <td>{{ $bobot->point }}</td>
                         <td>{{ $bobot->bobot }}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editbobot-{{ $bobot->id }}">Edit</button>
+                        </td>
                     </tr>
+
+                    {{-- form edit --}}
+                    <div class="modal fade" id="editbobot-{{ $bobot->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Bobot</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                            <form method="POST" action="{{ route('user.bobot.update', $bobot->id) }}">
+                                @csrf
+                                <input type="hidden" name="_method" value="PUT">
+                                <div class="form-group">
+                                    <label for="{{ $bobot->Kriteria->id }}"><h4>{{ $bobot->Kriteria->nama_kriteria }}</h4></label>
+                                    <p class="card-secription">Seberapa penting {{ $bobot->Kriteria->nama_kriteria }} terhadap jurusan yang dipilih bagi kamu?</p>
+                                    <input class="progress" type="range" name="point" id="get{{ $bobot->Kriteria->id }}" min="1" max="10" value="1" onchange="bobot{{ $bobot->Kriteria->id }}()" step="1" required>
+                                    <input type="hidden" name="{{ $bobot->Kriteria->id }}kriteria">
+
+                                    <input type="number" id="put{{ $bobot->Kriteria->id }}" style="width:3rem;" value="1" readonly>
+                                    <script>
+                                        function bobot{{ $bobot->Kriteria->id }}(){
+                                        var get = document.getElementById("get{{ $bobot->Kriteria->id }}").value;
+                                        document.getElementById("put{{ $bobot->Kriteria->id }}").value = get;
+                                    }
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary" value="submit">Simpan</button>
+                            </div>
+                        </form>
+                        </div>
+                        </div>
+                    </div>
                 @endforeach
             </tbody>
         </table>

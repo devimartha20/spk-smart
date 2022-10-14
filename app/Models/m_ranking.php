@@ -23,7 +23,7 @@ class m_ranking extends Model
     }
     public function allData()
     {
-        return m_ranking::with('Alternatif')->where('m_alternatifs.user_is', Auth::user()->id)->get();
+        return m_ranking::with('Alternatif')->where('m_alternatifs.user_id', Auth::user()->id)->get();
     }
     public function addData($data)
     {

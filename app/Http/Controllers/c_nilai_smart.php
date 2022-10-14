@@ -38,20 +38,23 @@ class c_nilai_smart extends Controller
     //     return view('smart.v_create', $alternatif);
     // }
 
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $n = $this->m_kriteria->jumlahData();
-
-        for($i = 0; $i < $n; $i++)
-        {
+        $alternatif = $this->alternative->allData();
+        foreach ($alternatif as $data2) {
+        $kriteria = $this->m_kriteria->allData();
+        $i = 1;
+        foreach ($kriteria as $data1) {
             $data = [
-                'alternative_id' => $id,
-                'criteria_id' => ${"request->criteria_id".$i},
-                'nilai_awal' => ${"request->nilai_awal".$i},
+                'm_alternative_id' => $Realternatif_id,
+                'm_criteria_id' => $data1->id,
+                'nilai_awal' => ${"request->".$data1->nama_alternatif.$i."nilai_awal"},
             ];
             $this->m_nilai_smart->addData($data);
+            $i = $i + 1;
         }
-        return redirect()->route('smart.index');
+        }
+        return redirect()->route('smart.utylity');
     }
 
     public function edit($id)
@@ -64,17 +67,21 @@ class c_nilai_smart extends Controller
 
     public function update(Request $request, $id)
     {
-        $n = $this->m_kriteria->jumlahData();
-
-        for($i = 0; $i < $n; $i++)
-        {
-            $criteria_id = ${"request->criteria_id".$i};
+        $alternatif = $this->alternative->allData();
+        foreach ($alternatif as $data2) {
+        $kriteria = $this->m_kriteria->allData();
+        $i = 1;
+        foreach ($kriteria as $data1) {
+            $id = $data2->id;
+            $m_kriteria_id = $data1->id;
             $data = [
-                'nilai_awal' => ${"request->nilai_awal".$i},
+                'nilai_awal' => ${"request->".$data1->nama_alternatif.$i."nilai_awal"},
             ];
-            $this->m_nilai_smart->addData($id, $criteria_id, $data);
+            $this->m_nilai_smart->editData($id,  $m_kriteria_id, $data);
+            $i = $i + 1;
         }
-        return redirect()->route('smart.index');
+        }
+        return redirect()->route('smart.utylity');
     }
 
     public function utility()

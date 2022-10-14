@@ -32,13 +32,23 @@ class c_ranking extends Controller
 
         foreach ($alternative as $data1)
         {
-            $alternative_id = $data1->id;
-            $hasil_akhir = $this->m_nilai_smart->hasilData($alternative_id);
-            $data = [
-                'hasil_akhir' => $hasil_akhir,
-                'alternative_id' => $alternative_id,
-            ];
-            $this->m_ranking->addData($data);
+            $cek = $this->m_ranking->cekData();
+            if ($cek->hasil_akhir <> null) {
+                $id = $data1->id;
+                $hasil_akhir = $this->m_nilai_smart->hasilData($alternative_id);
+                $data = [
+                    'hasil_akhir' => $hasil_akhir,
+                ];
+                $this->m_ranking->updateData1($id, $$data);
+            } else {
+                $alternative_id = $data1->id;
+                $hasil_akhir = $this->m_nilai_smart->hasilData($alternative_id);
+                $data = [
+                    'hasil_akhir' => $hasil_akhir,
+                    'm_alternative_id' => $alternative_id,
+                ];
+                $this->m_ranking->addData($data);
+            }
         }
         return redirect()->route('rank.update');
 
@@ -50,13 +60,13 @@ class c_ranking extends Controller
         $ranking = 0;
         foreach ($akhir as $hakhir)
         {
-            $hasil_akhir = $akhir->hasil_akhir;
+            $id = $akhir->m_alternative_id;
             $ranking = $ranking + 1;
             $data = [
                 'rangking' => $ranking,
             ];
-            $this->m_ranking->updateData($hasil_akhir, $data);
+            $this->m_ranking->updateData($id, $data);
         }
-        return redirect()->route('rank.index');
+        return redirect()->route('smart.index');
     }
 }

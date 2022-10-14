@@ -31,8 +31,12 @@ class m_ranking extends Model
         return DB::table('rankings')->join('m_alternatives', 'm_alternatives.id', '=','rankings.m_alternative_id')->where('m_alternatives.user_is', Auth::user()->id)->orderby('hasil_akhir', 'desc')->get();
     }
 
-    public function updateData($hasil_akhir, $data)
+    public function cekData($id)
     {
-        DB::table('rankings')->where('hasil_akhir', $hasil_akhir)->update($data);
+        return DB::table('rankings')->where('m_alternative_id', $id)->get();
+    }
+    public function updateData($hasil_akhir, $id)
+    {
+        DB::table('rankings')->where('m_alternative_id', $id)->update($data);
     }
 }

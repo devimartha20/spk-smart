@@ -45,12 +45,12 @@ class c_nilai_smart extends Controller
         $alternatif = $this->m_alternatif->allData();
         foreach ($alternatif as $data2) {
         $kriteria = $this->m_kriteria->allData();
-        $i = 1;
+        $i = 0;
         foreach ($kriteria as $data1) {
             $nama_alternatif = $data2->nama_alternatif;
             $data = [
-                'm_alternative_id' => $request->alternatif_id,
-                'm_criteria_id' => $data1->id,
+                'm_alternatif_id' => $request->alternatif_id,
+                'm_kriteria_id' => $data1->id,
                 'nilai_awal' => $request->{$nama_alternatif.$i."nilai_awal"},
             ];
             $this->m_nilai_smart->addData($data);

@@ -91,7 +91,7 @@ class c_nilai_smart extends Controller
     {
         $nilai_smart = $this->m_nilai_smart->allData();
         foreach ($nilai_smart as $nilai) {
-            $id = $nilai->m_alternatif_id;
+            $m_alternatif_id = $nilai->m_alternatif_id;
             $m_kriteria_id = $nilai->m_kriteria_id;
             $a = $nilai->nilai_awal;
             $max = $this->m_nilai_smart->dataMax($m_kriteria_id);
@@ -103,10 +103,8 @@ class c_nilai_smart extends Controller
             {
                 $nilai_utility = ($max-$a)/($max-$min);
             }
-            $data = [
-                'nilai_utility' => $nilai_utility,
-            ];
-            $this->m_nilai_smart->update($id, $m_kriteria_id, $data);
+            
+            $this->m_nilai_smart->utility($m_alternatif_id, $m_kriteria_id, $nilai_utility);
         }
         return redirect()->route('smart.akhir');
     }

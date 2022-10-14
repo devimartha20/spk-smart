@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\c_alternatif;
 use App\Http\Controllers\c_bobot;
 use App\Http\Controllers\c_kriteria;
+use App\Http\Controllers\c_nilai_smart;
 use App\Http\Controllers\c_user;
 use Illuminate\Support\Facades\Route;
 
@@ -72,6 +73,16 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser','PreventBack
             'store' => 'user.alternatif.store',
             'update' => 'user.alternatif.update',
             'destroy' => 'user.alternatif.delete'
+        ]
+    ]);
+
+    Route::resource('smart', c_nilai_smart::class, [
+        'names' => [
+            'index' => 'user.smart.index',
+            'store' => 'user.smart.store',
+            'update' => 'user.smart.update',
+            'utility' => 'user.smart.utility',
+            'akhir' =>  'user.smart.akhir'
         ]
     ]);
 });

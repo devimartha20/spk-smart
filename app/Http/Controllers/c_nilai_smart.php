@@ -23,16 +23,21 @@ class c_nilai_smart extends Controller
         $nilai_smart = [
             'nilai_smart' => $this->m_nilai_smart->allData(),
         ];
-        return view('smart.v_index', $nilai_smart);
+        $kriteria = [
+            'kriteria' => $this->m_kriteria->allData()
+        ];
+
+
+        return view('dashboards.user.smart', $nilai_smart, $kriteria);
     }
 
-    public function create($id)
-    {
-        $alternatif = [
-            'alternatif' => $this->m_alternatif->detailData($id),
-        ];
-        return view('smart.v_create', $alternatif);
-    }
+    // public function create($id)
+    // {
+    //     $alternatif = [
+    //         'alternatif' => $this->m_alternatif->detailData($id),
+    //     ];
+    //     return view('smart.v_create', $alternatif);
+    // }
 
     public function store(Request $request, $id)
     {

@@ -32,7 +32,8 @@
       Beri nilai dari 1-10 untuk memberikan penilaian seberapa penting kriteria ini untuk kamu
     </p>
     <hr><br>
-    <form class="forms-sample">
+    <form class="forms-sample" action="{{ route('user.bobot.store') }}" method="POST">
+        @csrf
         @foreach ($kriteria as $kriteria)
         <div class="form-group">
             <label for="{{ $kriteria->nama_kriteria }}"><h4>{{ $kriteria->nama_kriteria }}</h4></label>
@@ -56,7 +57,7 @@
   </div>
 @else
     <div class="div table-responsive">
-        <div class="div table table-striped">
+        <table class="div table table-striped">
             <thead>
                 <tr>
                     <th>No</th>
@@ -79,7 +80,7 @@
                     </tr>
                 @endforeach
             </tbody>
-        </div>
+        </table>
     </div>
 @endif
 

@@ -88,4 +88,12 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser','PreventBack
     ]);
     Route::get('utility', [c_nilai_smart::class, 'utility'])->name('user.smart.utility');
     Route::get('akhir', [c_nilai_smart::class, 'akhir'])->name('user.smart.akhir');
+
+    Route::resource('ranking', c_ranking::class, [
+        'names' => [
+            'index' => 'user.rank.index',
+            'store' => 'user.rank.store',
+            'update' => 'user.rank.update',
+        ]
+        ]);
 });

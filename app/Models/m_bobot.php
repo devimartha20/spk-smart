@@ -60,6 +60,6 @@ class m_bobot extends Model
 
     public function bobotCriteria($criteria_id)
     {
-        m_bobot::with('User')->where('user_id', Auth::user()->id)->where('m_kriteria_id', $criteria_id)->get();
+        return m_bobot::with('User')->where('user_id', Auth::user()->id)->where('m_kriteria_id', $criteria_id)->get();
     }
 }

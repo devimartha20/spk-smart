@@ -76,8 +76,8 @@
                     <tr>
                         <td>{{ $nilai->Alternatif->nama_alternatif }}</td>
                         <td>{{ $nilai->Kriteria->nama_kriteria }}</td>
-                        <td>{{ $nilai->nilai_utility }}</td>
                         <td>{{ $nilai->nilai_awal }}</td>
+                        <td>{{ $nilai->nilai_utility }}</td>
                         <td>{{ $nilai->nilai_akhir }}</td>
                     </tr>
                 @endforeach

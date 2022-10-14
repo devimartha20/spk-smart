@@ -106,15 +106,15 @@ class c_nilai_smart extends Controller
             
             $this->m_nilai_smart->utility($m_alternatif_id, $m_kriteria_id, $nilai_utility);
         }
-        return redirect()->route('smart.akhir');
+        return redirect('/user/akhir/');
     }
 
     public function akhir()
     {
         $nilai_smart = $this->m_nilai_smart->allData();
         foreach ($nilai_smart as $nilai) {
-            $id = $nilai->m_alternative_id;
-            $criteria_id = $nilai->m_criteria_id;
+            $id = $nilai->m_alternatif_id;
+            $criteria_id = $nilai->m_kriteria_id;
             $a = $nilai->nilai_utility;
             $bobot = $this->m_bobot->bobotCriteria($criteria_id);
             $nilai_akhir = $a * $bobot->bobot;

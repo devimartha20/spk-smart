@@ -33,6 +33,7 @@ class c_bobot extends Controller
 
     public function store(Request $request)
     {
+        
 
         $kriteria = $this->m_kriteria->allData();
         foreach ($kriteria as $data1) {

@@ -33,12 +33,12 @@ class m_nilai_smart extends Model
 
     public function allData()
     {
-        return DB::table('m_nilai_smarts')->join('m_alternatifs', 'm_alternatifs.id', '=','m_nilai_smarts.m_alternatif_id')->join('m_kriterias', 'm_kriterias.id', '=','m_nilai_smarts.m_kriteria_id')->where('m_alternatifs.user_id', Auth::user()->id)->get();
+        return m_nilai_smart::with('Alternatif', 'Kriteria')->join('m_alternatifs', 'm_alternatifs.id', '=','m_nilai_smarts.m_alternatif_id')->join('m_kriterias', 'm_kriterias.id', '=','m_nilai_smarts.m_kriteria_id')->where('m_alternatifs.user_id', Auth::user()->id)->get();
     }
 
     public function detailData($id)
     {
-        return  DB::table('m_nilai_smarts')->join('m_alternatifs', 'm_alternatifs.id', '=','m_nilai_smarts.m_alternatif_id')->join('m_kriterias', 'm_kriterias.id', '=','m_nilai_smarts.m_kriteria_id')->where('m_alternatif_id', $id)->where('m_alternatifs.user_id', Auth::user()->id)->get();
+        return  m_nilai_smart::with('Alternatif', 'Kriteria')->join('m_alternatifs', 'm_alternatifs.id', '=','m_nilai_smarts.m_alternatif_id')->join('m_kriterias', 'm_kriterias.id', '=','m_nilai_smarts.m_kriteria_id')->where('m_alternatif_id', $id)->where('m_alternatifs.user_id', Auth::user()->id)->get();
     }
 
     public function addData($data)

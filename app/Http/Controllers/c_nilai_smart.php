@@ -57,7 +57,7 @@ class c_nilai_smart extends Controller
             $i = $i + 1;
         }
         }
-        return redirect()->route('/user/utility/');
+        return redirect('/user/utility/');
     }
 
     public function edit($id)
@@ -84,7 +84,7 @@ class c_nilai_smart extends Controller
             $i = $i + 1;
         }
         }
-        return redirect()->route('smart.utylity');
+        return redirect('smart.utylity');
     }
 
     public function utility()

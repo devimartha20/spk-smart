@@ -50,7 +50,7 @@ class c_ranking extends Controller
                 $this->m_ranking->addData($data);
             }
         }
-        return redirect()->route('rank.update');
+        return redirect()->route('user.rank.update');
 
     }
 

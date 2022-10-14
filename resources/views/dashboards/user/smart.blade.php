@@ -15,21 +15,34 @@
             @foreach ($kriteria as $kriteria)
                 <th>{{ $kriteria->nama_kriteria }}</th>
             @endforeach
+            <th>
+                Action
+            </th>
             </tr>
+            @php
+                reset($kriteria);
+            @endphp
         </thead>
         <tbody>
-                @foreach ($alternatif as $alternatif)
-                    <tr>
-                        <td>{{ $alternatif->nama_alternatif }}</td>
-                        @foreach ($kriteria as $krtieria)
-                            <td>
-                                <form action="{{ route('user.smart.store') }}" method="post">
-                                    <input type="number" name="{{ $kriteria->id }}nilai_awal" id="">
-                                </form>
-                            </td>
-                        @endforeach
-                    </tr>
-                @endforeach
+            @foreach ($alternatif as $alternatif)
+                <tr>
+                    <td>{{ $alternatif->nama_alternatif }}</td>
+                    @for ($k = 0; $k < $jKriteria; $k++)
+                    <form action="{{ route('user.smart.store') }}" method="post">
+                        @csrf
+                        <td>
+                            <input type="number" name="{{ $k }}nilai_awal" value="1" min="1" max="10" required>
+                        </td>
+                    @endfor
+                        <input type="hidden" name="alternatif_id" value="{{ $alternatif->id }}">
+                    <td>
+                        <button type="submit"> Simpan </button>
+                    </td>
+                </form>
+                </tr>
+            @endforeach
+
+
         </tbody>
 
     </table>

@@ -91,7 +91,7 @@ class c_nilai_smart extends Controller
     {
         $nilai_smart = $this->m_nilai_smart->allData();
         foreach ($nilai_smart as $nilai) {
-            $id = $nilai->m_alternative_id;
+            $id = $nilai->m_alternatif_id;
             $criteria_id = $nilai->criteria_id;
             $a = $nilai->nilai_awal;
             $max = $this->m_nilai_smart->dataMax($criteria_id);

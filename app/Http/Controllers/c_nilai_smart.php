@@ -27,6 +27,7 @@ class c_nilai_smart extends Controller
             'kriteria' => $this->m_kriteria->allData(),
             'alternatif' => $this->m_alternatif->allData(),
             'jKriteria' => $this->m_kriteria->jumlahData(),
+            'ranking' => $this->m_ranking->allData(),
         ];
 
         return view('dashboards.user.smart', $data );

@@ -6,6 +6,7 @@ use App\Http\Controllers\c_alternatif;
 use App\Http\Controllers\c_bobot;
 use App\Http\Controllers\c_kriteria;
 use App\Http\Controllers\c_nilai_smart;
+use App\Http\Controllers\c_ranking;
 use App\Http\Controllers\c_user;
 use Illuminate\Support\Facades\Route;
 
@@ -88,12 +89,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser','PreventBack
     ]);
     Route::get('utility', [c_nilai_smart::class, 'utility'])->name('user.smart.utility');
     Route::get('akhir', [c_nilai_smart::class, 'akhir'])->name('user.smart.akhir');
+    Route::get('create', [c_nilai_smart::class, 'create'])->name('user.rank.create');
+    Route::get('rank', [c_nilai_smart::class, 'rank'])->name('user.rank.store');
 
-    Route::resource('ranking', c_ranking::class, [
-        'names' => [
-            'index' => 'user.rank.index',
-            'store' => 'user.rank.store',
-            'update' => 'user.rank.update',
-        ]
-        ]);
 });

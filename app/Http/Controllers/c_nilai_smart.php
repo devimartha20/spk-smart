@@ -121,10 +121,10 @@ class c_nilai_smart extends Controller
             $a = $nilai->nilai_utility;
             $bobot = $this->m_bobot->bobotCriteria($criteria_id);
             $nilai_akhir = $a * $bobot;
-            
+
             $this->m_nilai_smart->nilaiakhir($m_alternatif_id, $m_kriteria_id, $nilai_akhir);
         }
-        return redirect()->route('smart.create');
+        return redirect()->route('user.rank.create');
     }
 
 
@@ -154,7 +154,7 @@ class c_nilai_smart extends Controller
                 $this->m_ranking->addData($data);
         //     }
         }
-        return redirect()->route('store.rank');
+        return redirect()->route('user.rank.store');
 
     }
 

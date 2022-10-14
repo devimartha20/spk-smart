@@ -26,33 +26,33 @@ class c_ranking extends Controller
         return view('v_hasil', $ranking);
     }
 
-    public function store()
-    {
-        $alternative = $this->m_alternatif->allData();
+    // public function store()
+    // {
+    //     $alternative = $this->m_alternatif->allData();
 
-        foreach ($alternative as $data1)
-        {
-            $cek = $this->m_ranking->cekData();
-            if ($cek->hasil_akhir <> null) {
-                $id = $data1->id;
-                $hasil_akhir = $this->m_nilai_smart->hasilData($alternative_id);
-                $data = [
-                    'hasil_akhir' => $hasil_akhir,
-                ];
-                $this->m_ranking->updateData1($id, $$data);
-            } else {
-                $alternative_id = $data1->id;
-                $hasil_akhir = $this->m_nilai_smart->hasilData($alternative_id);
-                $data = [
-                    'hasil_akhir' => $hasil_akhir,
-                    'm_alternative_id' => $alternative_id,
-                ];
-                $this->m_ranking->addData($data);
-            }
-        }
-        return redirect()->route('user.rank.update');
+    //     foreach ($alternative as $data1)
+    //     {
+    //         $cek = $this->m_ranking->cekData();
+    //         if ($cek->hasil_akhir <> null) {
+    //             $id = $data1->id;
+    //             $hasil_akhir = $this->m_nilai_smart->hasilData($alternative_id);
+    //             $data = [
+    //                 'hasil_akhir' => $hasil_akhir,
+    //             ];
+    //             $this->m_ranking->updateData1($id, $$data);
+    //         } else {
+    //             $alternative_id = $data1->id;
+    //             $hasil_akhir = $this->m_nilai_smart->hasilData($alternative_id);
+    //             $data = [
+    //                 'hasil_akhir' => $hasil_akhir,
+    //                 'm_alternative_id' => $alternative_id,
+    //             ];
+    //             $this->m_ranking->addData($data);
+    //         }
+    //     }
+    //     return redirect()->route('user.rank.update');
 
-    }
+    // }
 
     public function update()
     {

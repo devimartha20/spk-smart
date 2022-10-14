@@ -153,7 +153,7 @@ class c_nilai_smart extends Controller
                     'm_alternative_id' => $m_alternatif_id,
                 ];
                 $this->m_ranking->addData($data);
-            }
+        //     }
         }
         return redirect()->route('store.rank');
 

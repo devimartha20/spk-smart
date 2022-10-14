@@ -26,7 +26,7 @@ class c_nilai_smart extends Controller
             'alternatif' => $this->m_alternatif->allData(),
         ];
 
-        return view('dashboards.user.smart', $nilai_smart, $kriteria, $alternatif );
+        return view('dashboards.user.smart', $data);
     }
 
     // public function create($id)

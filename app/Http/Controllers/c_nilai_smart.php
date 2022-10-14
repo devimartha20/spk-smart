@@ -49,7 +49,7 @@ class c_nilai_smart extends Controller
         foreach ($kriteria as $data1) {
             $id = $data2->id;
             $data = [
-                'm_alternatif_id' => $request->alternatif_id,
+                'm_alternatif_id' => $id,
                 'm_kriteria_id' => $data1->id,
                 'nilai_awal' => $request->{$id.$i."nilai_awal"},
             ];

@@ -7,7 +7,7 @@
             @include('dashboards.user.pagination.alternatif-part')
 
         {{-- case bobot dan alternatif sudah ada tapi belum input nilai --}}
-        @elseif($nilai->isEmpty())
+        @elseif($nilai_smart->isEmpty())
          @include('dashboards.user.pagination.nilai-part')
 
         {{-- case sudah melakukan semua proses --}}

@@ -47,15 +47,15 @@ class c_ranking extends Controller
     public function update()
     {
         $akhir = $this->m_ranking->sortDesc();
-
+        $ranking = 0;
         foreach ($akhir as $hakhir)
         {
-            $id = $akhir->id;
-            $ranking = 1;
+            $hasil_akhir = $akhir->hasil_akhir;
+            $ranking = $ranking + 1;
             $data = [
                 'rangking' => $ranking,
             ];
-            $this->m_ranking->updateData($id, $data);
+            $this->m_ranking->updateData($hasil_akhir, $data);
         }
         return redirect()->route('rank.index');
     }

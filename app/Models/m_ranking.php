@@ -19,7 +19,7 @@ class m_ranking extends Model
 
     public function allData()
     {
-        DB::table('rankings')->join('m_alternatives', 'm_alternatives.id', '=','rankings.m_alternative_id')->where('m_alternatives.user_is', Auth::user()->id)->get();
+        return DB::table('rankings')->join('m_alternatives', 'm_alternatives.id', '=','rankings.m_alternative_id')->where('m_alternatives.user_is', Auth::user()->id)->get();
     }
     public function addData($data)
     {
@@ -31,8 +31,8 @@ class m_ranking extends Model
         return DB::table('rankings')->join('m_alternatives', 'm_alternatives.id', '=','rankings.m_alternative_id')->where('m_alternatives.user_is', Auth::user()->id)->orderby('hasil_akhir', 'desc')->get();
     }
 
-    public function updateData($id, $data)
+    public function updateData($hasil_akhir, $data)
     {
-        DB::table('rankings')->where('id', $id)->update($data);
+        DB::table('rankings')->where('hasil_akhir', $hasil_akhir)->update($data);
     }
 }

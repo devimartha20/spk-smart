@@ -39,18 +39,19 @@ class c_nilai_smart extends Controller
 
     public function store(Request $request, $id)
     {
-        $n = $this->m_kriteria->jumlahData();
-
-        for($i = 0; $i < $n; $i++)
-        {
+        $kriteria = $this->m_kriteria->allData();
+        $i = 1;
+        foreach ($variable as $key => $value) {
+            
             $data = [
-                'alternative_id' => $id,
-                'criteria_id' => ${"request->criteria_id".$i},
-                'nilai_awal' => ${"request->nilai_awal".$i},
+                'alternative_id' => $alternatif_id,
+                'criteria_id' => $i,
+                'nilai_awal' => ${$i."request->nilai_awal"},
             ];
             $this->m_nilai_smart->addData($data);
+            $i = $i + 1;
         }
-        return redirect()->route('smart.index');
+        return redirect()->route('smart.utylity');
     }
 
     public function edit($id)

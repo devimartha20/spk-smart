@@ -40,7 +40,7 @@ class c_nilai_smart extends Controller
 
     public function store(Request $request)
     {
-        $alternatif = $this->alternative->allData();
+        $alternatif = $this->m_alternatif->allData();
         foreach ($alternatif as $data2) {
         $kriteria = $this->m_kriteria->allData();
         $i = 1;
@@ -67,7 +67,7 @@ class c_nilai_smart extends Controller
 
     public function update(Request $request, $id)
     {
-        $alternatif = $this->alternative->allData();
+        $alternatif = $this->m_alternatif->allData();
         foreach ($alternatif as $data2) {
         $kriteria = $this->m_kriteria->allData();
         $i = 1;
@@ -88,7 +88,7 @@ class c_nilai_smart extends Controller
     {
         $nilai_smart = $this->m_nilai_smart->allData();
         foreach ($nilai_smart as $nilai) {
-            $id = $nilai->alternative_id;
+            $id = $nilai->m_alternative_id;
             $criteria_id = $nilai->criteria_id;
             $a = $nilai->nilai_awal;
             $max = $this->m_nilai_smart->dataMax($criteria_id);
@@ -112,8 +112,8 @@ class c_nilai_smart extends Controller
     {
         $nilai_smart = $this->m_nilai_smart->allData();
         foreach ($nilai_smart as $nilai) {
-            $id = $nilai->alternative_id;
-            $criteria_id = $nilai->criteria_id;
+            $id = $nilai->m_alternative_id;
+            $criteria_id = $nilai->m_criteria_id;
             $a = $nilai->nilai_utility;
             $bobot = $this->m_bobot->bobotCriteria($criteria_id);
             $nilai_akhir = $a * $bobot->bobot;

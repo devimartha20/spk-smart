@@ -45,10 +45,11 @@ class c_nilai_smart extends Controller
         $kriteria = $this->m_kriteria->allData();
         $i = 1;
         foreach ($kriteria as $data1) {
+            $nama_alternatif = $data2->nama_alternatif;
             $data = [
-                'm_alternative_id' => $Realternatif_id,
+                'm_alternative_id' => $request->alternatif_id,
                 'm_criteria_id' => $data1->id,
-                'nilai_awal' => ${"request->".$data1->nama_alternatif.$i."nilai_awal"},
+                'nilai_awal' => $request->{$nama_alternatif.$i."nilai_awal"},
             ];
             $this->m_nilai_smart->addData($data);
             $i = $i + 1;
@@ -122,7 +123,52 @@ class c_nilai_smart extends Controller
             ];
             $this->m_nilai_smart->update($id, $criteria_id, $data);
         }
-        return redirect()->route('rank.store');
+        return redirect()->route('smart.create');
+    }
+
+    
+    public function create()
+    {
+        $alternative = $this->m_alternatif->allData();
+
+        foreach ($alternative as $data1)
+        {
+            $cek = $this->m_ranking->cekData();
+            if ($cek->hasil_akhir <> null) {
+                $id = $data1->id;
+                $hasil_akhir = $this->m_nilai_smart->hasilData($alternative_id);
+                $data = [
+                    'hasil_akhir' => $hasil_akhir,
+                ];
+                $this->m_ranking->updateData1($id, $$data);
+            } else {
+                $alternative_id = $data1->id;
+                $hasil_akhir = $this->m_nilai_smart->hasilData($alternative_id);
+                $data = [
+                    'hasil_akhir' => $hasil_akhir,
+                    'm_alternative_id' => $alternative_id,
+                ];
+                $this->m_ranking->addData($data);
+            }
+        }
+        return redirect()->route('store.rank');
+
+    }
+
+    public function rank()
+    {
+        $akhir = $this->m_ranking->sortDesc();
+        $ranking = 0;
+        foreach ($akhir as $hakhir)
+        {
+            $id = $akhir->m_alternative_id;
+            $ranking = $ranking + 1;
+            $data = [
+                'rangking' => $ranking,
+            ];
+            $this->m_ranking->updateData($id, $data);
+        }
+        return redirect()->route('smart.index');
     }
 
 }

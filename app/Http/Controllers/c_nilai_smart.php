@@ -106,7 +106,7 @@ class c_nilai_smart extends Controller
             $data = [
                 'nilai_utility' => $nilai_utility,
             ];
-            $this->m_nilai_smart->update($id, $m_criteria_id, $data);
+            $this->m_nilai_smart->update($id, $m_kriteria_id, $data);
         }
         return redirect()->route('smart.akhir');
     }

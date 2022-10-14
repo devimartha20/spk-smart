@@ -149,7 +149,7 @@ class c_nilai_smart extends Controller
                 $hasil_akhir = $this->m_nilai_smart->hasilData($m_alternatif_id);
                 $data = [
                     'hasil_akhir' => $hasil_akhir,
-                    'm_alternative_id' => $m_alternatif_id,
+                    'm_alternatif_id' => $m_alternatif_id,
                 ];
                 $this->m_ranking->addData($data);
         //     }

@@ -27,7 +27,7 @@ class m_ranking extends Model
     }
     public function addData($data)
     {
-        DB::table('rankings')->insert($data);
+        DB::table('m_rankings')->insert($data);
     }
 
     public function sortDesc()

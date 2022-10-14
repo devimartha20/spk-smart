@@ -169,7 +169,7 @@ class c_nilai_smart extends Controller
             $data = [
                 'rangking' => $ranking,
             ];
-            $this->m_ranking->updateData($id, $data);
+            $this->m_ranking->updateData($data, $id);
         }
         return redirect()->route('smart.index');
     }

@@ -142,3 +142,6 @@
 
 
 @endsection
+@section('jsContent')
+
+@endsection

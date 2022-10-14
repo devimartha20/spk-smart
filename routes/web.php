@@ -86,4 +86,6 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser','PreventBack
             'akhir' =>  'user.smart.akhir'
         ]
     ]);
+    Route::get('utility', [c_nilai_smart::class, 'utility'])->name('user.smart.utility');
+    Route::get('akhir', [c_nilai_smart::class, 'akhir'])->name('user.smart.akhir');
 });

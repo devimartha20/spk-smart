@@ -17,6 +17,10 @@ class m_ranking extends Model
     	'hasil_akhir',  'rangking', 'm_alternative_id'
     ];
 
+    // relasi
+    public function Alternatif(){
+        return $this->belongsTo('App\Models\m_altrnatif', 'm_alternatif_id');
+    }
     public function allData()
     {
         return DB::table('rankings')->join('m_alternatives', 'm_alternatives.id', '=','rankings.m_alternative_id')->where('m_alternatives.user_is', Auth::user()->id)->get();
@@ -35,7 +39,7 @@ class m_ranking extends Model
     {
         return DB::table('rankings')->where('m_alternative_id', $id)->get();
     }
-    public function updateData($hasil_akhir, $id)
+    public function updateData($data, $id)
     {
         DB::table('rankings')->where('m_alternative_id', $id)->update($data);
     }

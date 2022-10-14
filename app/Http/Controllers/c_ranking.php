@@ -51,23 +51,27 @@ class c_ranking extends Controller
     //             $this->m_ranking->addData($data);
     //         }
     //     }
+<<<<<<< HEAD
+    //     return redirect()->route('rank.update');
+=======
     //     return redirect()->route('user.rank.update');
+>>>>>>> 0a67a081710738af7053326b6b00f33313ab42c5
 
     // }
 
-    public function update()
-    {
-        $akhir = $this->m_ranking->sortDesc();
-        $ranking = 0;
-        foreach ($akhir as $hakhir)
-        {
-            $id = $akhir->m_alternative_id;
-            $ranking = $ranking + 1;
-            $data = [
-                'rangking' => $ranking,
-            ];
-            $this->m_ranking->updateData($id, $data);
-        }
-        return redirect()->route('smart.index');
-    }
+    // public function update()
+    // {
+    //     $akhir = $this->m_ranking->sortDesc();
+    //     $ranking = 0;
+    //     foreach ($akhir as $hakhir)
+    //     {
+    //         $id = $akhir->m_alternatif_id;
+    //         $ranking = $ranking + 1;
+    //         $data = [
+    //             'rangking' => $ranking,
+    //         ];
+    //         $this->m_ranking->updateData($id, $data);
+    //     }
+    //     return redirect()->route('smart.index');
+    // }
 }

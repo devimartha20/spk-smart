@@ -6,7 +6,7 @@
 @section('content')
 
 @if($alternatif->isEmpty() || $bobot->isEmpty())
-<h2>Kamu belum mengisi Alternatif</h2>
+<h2>Kamu belum mengisi Alternatif atau Bobot</h2>
 <a href="{{ route('user.alternatif.index') }}"><button>Isi Alternatif</button></a>
 <hr>
 @elseif ($nilai_smart->isEmpty())

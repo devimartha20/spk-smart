@@ -28,7 +28,8 @@ class UserController extends Controller
         $alternatif = m_alternatif::all()->where('user_id', Auth::user()->id);
         $nilai = m_nilai_smart::all()->where('user_id', Auth::user()->id);
         $ranking = m_ranking::all()->where('user_id', Auth::user()->id);
+        $jKriteria = m_kriteria::all()->count();
 
-        return view('dashboards.user.index', compact('bobot', 'kriteria', 'alternatif', 'nilai', 'ranking'));
+        return view('dashboards.user.index', compact('bobot', 'kriteria', 'alternatif', 'nilai', 'ranking', 'jKriteria'));
     }
 }

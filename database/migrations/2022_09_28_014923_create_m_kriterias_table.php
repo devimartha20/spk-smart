@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('criterias', function (Blueprint $table) {
+        Schema::create('m_kriterias', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kriteria');
             $table->enum('jenis_kriteria', ['benefit', 'cost']);

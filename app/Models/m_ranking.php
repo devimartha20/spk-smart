@@ -11,15 +11,15 @@ class m_ranking extends Model
 {
     use HasFactory;
 
-    public $table = 'rankings';
+    public $table = 'm_rankings';
 
     protected $fillable = [
-    	'hasil_akhir',  'rangking', 'alternative_id'
+    	'hasil_akhir',  'rangking', 'm_alternative_id'
     ];
 
     public function allData()
     {
-        DB::table('rankings')->join('alternatives', 'alternatives.id', '=','rankings.alternative_id')->where('alternatives.user_is', Auth::user()->id)->get();
+        DB::table('rankings')->join('m_alternatives', 'm_alternatives.id', '=','rankings.m_alternative_id')->where('m_alternatives.user_is', Auth::user()->id)->get();
     }
     public function addData($data)
     {
@@ -28,7 +28,7 @@ class m_ranking extends Model
 
     public function sortDesc()
     {
-        return DB::table('rankings')->join('alternatives', 'alternatives.id', '=','rankings.alternative_id')->where('alternatives.user_is', Auth::user()->id)->orderby('hasil_akhir', 'desc')->get();
+        return DB::table('rankings')->join('m_alternatives', 'm_alternatives.id', '=','rankings.m_alternative_id')->where('m_alternatives.user_is', Auth::user()->id)->orderby('hasil_akhir', 'desc')->get();
     }
 
     public function updateData($id, $data)

@@ -4,14 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class m_alternatif extends Model
 {
     use HasFactory;
 
-    public $table = 'alternatives';
+    public $table = 'm_alternatifs';
 
     protected $fillable = [
     	'id', 'nama_alternatif', 'nama_kampus', 'user_id', 'created_at', 'updated_at',
@@ -52,6 +51,4 @@ class m_alternatif extends Model
     {
         m_alternatif::with('User')->where('user_id', Auth::user()->id)->count();
     }
-
-
 }

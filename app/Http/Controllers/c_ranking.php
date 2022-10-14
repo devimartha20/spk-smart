@@ -23,7 +23,7 @@ class c_ranking extends Controller
         $ranking = [
             'rangking' => $this->m_ranking->allData(),
         ];
-        return view('v_hasil', $rangking);
+        return view('v_hasil', $ranking);
     }
 
     public function store()

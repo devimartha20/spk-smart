@@ -38,14 +38,14 @@ class c_bobot extends Controller
         foreach ($kriteria as $data1) {
 
         $data = [
-            'point' => ${"request->".$data1->id."point"},
-            'criteria_id' => $data1->id,
+            'point' => $request->{$data1->id."point"},
+            'm_kriteria_id' => $data1->id,
             'user_id' => Auth::user()->id,
         ];
         $this->m_bobot->addData($data);
         }
 
-        return redirect()->route('bobot.bobot');
+        return redirect('/user/bobothitung');
     }
 
     public function bobot()
@@ -53,7 +53,7 @@ class c_bobot extends Controller
         $bobot = $this->m_bobot->allData();
         foreach ($bobot as $data1) {
             $n = $data1->point;
-            $p = $this->m_bobot->jumlah();
+            $p = $this->m_bobot->jumlah($data1->user_id);
             $h = $n/$p;
             $id = $data1->id;
             $data = [
@@ -61,7 +61,7 @@ class c_bobot extends Controller
             ];
             $this->m_bobot->editData($id, $data);
         }
-        return redirect()->back();
+        return redirect()->route('user.bobot.index');
     }
 
     // public function edit($id)
@@ -80,13 +80,13 @@ class c_bobot extends Controller
 
         $data = [
             'point' => ${"request->".$data1->id."point"},
-            'criteria_id' => $data1->id,
+            'm_kriteria_id' => $data1->id,
             'user_id' => Auth::user()->id,
         ];
         $this->m_bobot->editData($data);
         }
 
-        return redirect()->route('bobot.bobot');
+        return redirect()->route('user.bobot.bobot');
     }
 
     public function destroy($id)

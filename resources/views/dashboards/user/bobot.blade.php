@@ -61,7 +61,7 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Kritria</th>
+                    <th>Kriteria</th>
                     <th>Point</th>
                     <th>Bobot</th>
                     <th>Action</th>
@@ -74,7 +74,7 @@
                 @foreach ($bobot as $bobot)
                     <tr>
                         <td class="py-1">{{ $no++ }}</td>
-                        <td>{{ $bobot->Kriteria->nama_kriteria }}</td>
+                         <td>{{ $bobot->Kriteria }}</td>
                         <td>{{ $bobot->point }}</td>
                         <td>{{ $bobot->bobot }}</td>
                     </tr>

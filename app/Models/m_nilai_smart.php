@@ -11,10 +11,10 @@ class m_nilai_smart extends Model
 {
     use HasFactory;
 
-    public $table = 'nilai_smarts';
+    public $table = 'm_nilai_smarts';
 
     protected $fillable = [
-    	'alternative_id', 'criteria_id', 'nilai_awal', 'nilai_utility', 'nilai_akhir'
+    	'm_alternatif_id', 'm_kriteria_id', 'nilai_awal', 'nilai_utility', 'nilai_akhir',
     ];
 
     public function User(){
@@ -31,46 +31,46 @@ class m_nilai_smart extends Model
 
     public function allData()
     {
-        return DB::table('nilai_smarts')->join('alternatives', 'alternatives.id', '=','nilai_smarts.alternative_id')->join('criterias', 'criterias.id', '=','nilai_smarts.criteria_id')->where('alternatives.user_id', Auth::user()->id)->get();
+        return DB::table('m_nilai_smarts')->join('m_alternatifs', 'm_alternatifs.id', '=','m_nilai_smarts.m_alternatif_id')->join('m_kriterias', 'm_kriterias.id', '=','m_nilai_smarts.m_kriteria_id')->where('m_alternatifs.user_id', Auth::user()->id)->get();
     }
 
     public function detailData($id)
     {
-        return  DB::table('nilai_smarts')->join('alternatives', 'alternatives.id', '=','nilai_smarts.alternative_id')->join('criterias', 'criterias.id', '=','nilai_smarts.criteria_id')->where('alternative_id', $id)->where('alternatives.user_id', Auth::user()->id)->get();
+        return  DB::table('m_nilai_smarts')->join('m_alternatifs', 'm_alternatifs.id', '=','m_nilai_smarts.m_alternatif_id')->join('m_kriterias', 'm_kriterias.id', '=','m_nilai_smarts.m_kriteria_id')->where('m_alternatif_id', $id)->where('m_alternatifs.user_id', Auth::user()->id)->get();
     }
 
     public function addData($data)
     {
-        DB::table('nilai_smarts')->insert($data);
+        DB::table('m_nilai_smarts')->insert($data);
     }
 
-    public function editData($id, $criteria_id, $data)
+    public function editData($id, $m_kriteria_id, $data)
     {
-        DB::table('nilai_smarts')->where('alternative_id', $id)->where('criteria_id', $criteria_id)->update($data);
+        DB::table('m_nilai_smarts')->where('m_alternatif_id', $id)->where('m_kriteria_id', $m_kriteria_id)->update($data);
     }
 
-    public function deleteData($alternative_id, $criteria_id)
+    public function deleteData($m_alternatif_id, $m_kriteria_id)
     {
-        DB::table('nilai_smarts')->where('alternative_id', $alternative_id)->where('criteria_id', $criteria_id)->delete();
+        DB::table('m_nilai_smarts')->where('m_alternatif_id', $m_alternatif_id)->where('m_kriteria_id', $m_kriteria_id)->delete();
     }
 
-    public function dataHitung($alternative_id, $criteria_id)
+    public function dataHitung($m_alternatif_id, $m_kriteria_id)
     {
-        return  DB::table('nilai_smarts')->where('alternative_id', $alternative_id)->where('criteria_id', $criteria_id)->get();
+        return  DB::table('m_nilai_smarts')->where('m_alternatif_id', $m_alternatif_id)->where('m_kriteria_id', $m_kriteria_id)->get();
     }
 
-    public function dataMax($criteria_id)
+    public function dataMax($m_kriteria_id)
     {
-        return  DB::table('nilai_smarts')->join('alternatives', 'alternatives.id', '=','nilai_smarts.alternative_id')->where('criteria_id', $criteria_id)->where('alternatives.user_id', Auth::user()->id)->max('nilai_awal');
+        return  DB::table('m_nilai_smarts')->join('m_alternatifs', 'm_alternatifs.id', '=','m_nilai_smarts.m_alternatif_id')->where('m_kriteria_id', $m_kriteria_id)->where('m_alternatifs.user_id', Auth::user()->id)->max('nilai_awal');
     }
 
-    public function dataMin($criteria_id)
+    public function dataMin($m_kriteria_id)
     {
-        return  DB::table('nilai_smarts')->join('alternatives', 'alternatives.id', '=','nilai_smarts.alternative_id')->where('criteria_id', $criteria_id)->where('alternatives.user_id', Auth::user()->id)->min('nilai_awal');
+        return  DB::table('m_nilai_smarts')->join('m_alternatifs', 'm_alternatifs.id', '=','m_nilai_smarts.m_alternatif_id')->where('m_kriteria_id', $m_kriteria_id)->where('m_alternatifs.user_id', Auth::user()->id)->min('nilai_awal');
     }
 
-    public function hasilData($alternative_id)
+    public function hasilData($m_alternatif_id)
     {
-        return  DB::table('nilai_smarts')->join('alternatives', 'alternatives.id', '=','nilai_smarts.alternative_id')->where('alternativ_id', $alternativ_id)->where('alternatives.user_id', Auth::user()->id)->sum('nilai_akhir');
+        return  DB::table('m_nilai_smarts')->join('m_alternatifs', 'm_alternatifs.id', '=','m_nilai_smarts.m_alternatif_id')->where('alternativ_id', $m_alternatif_id)->where('m_alternatifs.user_id', Auth::user()->id)->sum('nilai_akhir');
     }
 }

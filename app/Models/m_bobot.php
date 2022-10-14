@@ -12,10 +12,10 @@ class m_bobot extends Model
 {
     use HasFactory;
 
-    public $table = 'bobots';
+    public $table = 'm_bobots';
 
     protected $fillable = [
-    	'id', 'bobot', 'point', 'criteria_id', 'user_id'
+    	'id', 'bobot', 'point', 'm_kriteria_id', 'user_id'
     ];
 
 //definisi relasi tabel
@@ -24,7 +24,7 @@ class m_bobot extends Model
     }
 
     public function Kriteria(){
-        return $this->hasOne(m_kriteria::class);
+        return $this->belongsTo('App\Models\m_kriteria', 'm_kriteria_id');
     }
 
 //CRUD
@@ -53,13 +53,13 @@ class m_bobot extends Model
         m_bobot::with('User')->where('id', $id)->delete();
     }
 
-    public function jumlah()
+    public function jumlah($id)
     {
-        return  m_bobot::with('User')->where('id', $id)->sum('point')->get();
+        return  m_bobot::with('User')->where('user_id', $id)->sum('point');
     }
 
     public function bobotCriteria($criteria_id)
     {
-        m_bobot::with('User', 'Kriteria')->where('user_id', Auth::user()->id)->where('criteria_id', $criteria_id)->get();
+        m_bobot::with('User')->where('user_id', Auth::user()->id)->where('m_kriteria_id', $criteria_id)->get();
     }
 }

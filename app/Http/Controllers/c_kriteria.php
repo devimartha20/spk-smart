@@ -28,7 +28,7 @@ class c_kriteria extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_kriteria' => 'required|unique:criterias,nama_kriteria',
+            'nama_kriteria' => 'required|unique:m_kriterias,nama_kriteria',
             'jenis_kriteria' => 'required',
         ]);
 

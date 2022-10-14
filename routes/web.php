@@ -63,10 +63,10 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser','PreventBack
           'index' => 'user.bobot.index',
             'store' => 'user.bobot.store',
             'update' => 'user.bobot.update',
-            'bobot' => 'user.bobot.bobot',
             'destroy' => 'user.bobot.delete'
         ]
     ]);
+    Route::get('bobothitung', [c_bobot::class, 'bobot'])->name('user.bobothitung');
 
     Route::resource('alternatif', c_alternatif::class,[
         'names' => [

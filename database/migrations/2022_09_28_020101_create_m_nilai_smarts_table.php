@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('nilai_smarts', function (Blueprint $table) {
-            $table->unsignedBigInteger('alternative_id');
-            $table->unsignedBigInteger('criteria_id');
-            $table->primary(['alternative_id', 'criteria_id']);
-            $table->foreign('alternative_id')->references('id')->on('alternatives')->onDelete('cascade');
-            $table->foreign('criteria_id')->references('id')->on('criterias')->onDelete('cascade');
+        Schema::create('m_nilai_smarts', function (Blueprint $table) {
+            $table->unsignedBigInteger('m_alternatif_id');
+            $table->unsignedBigInteger('m_kriteria_id');
+            $table->primary(['m_alternatif_id', 'm_kriteria_id']);
+            $table->foreign('m_alternatif_id')->references('id')->on('m_alternatifs')->onDelete('cascade');
+            $table->foreign('m_kriteria_id')->references('id')->on('m_kriterias')->onDelete('cascade');
             $table->float('nilai_awal', 5, 3);
             $table->float('nilai_utility', 5, 3)->nullable();
             $table->float('nilai_akhir', 5, 3)->nullable();

@@ -10,39 +10,43 @@ class m_kriteria extends Model
 {
     use HasFactory;
 
-    public $table = 'criterias';
+    public $table = 'm_kriterias';
 
     protected $fillable = [
     	'id', 'nama_kriteria', 'jenis_kriteria'
     ];
 
+    public function Bobot(){
+        return $this->hasMany(m_bobot::class);
+    }
+
     public function allData()
     {
-        return DB::table('criterias')->get();
+        return DB::table('m_kriterias')->get();
     }
 
     public function detailData($id)
     {
-        return  DB::table('criterias')->where('id', $id)->first();
+        return  DB::table('m_kriterias')->where('id', $id)->first();
     }
 
     public function addData($data)
     {
-        DB::table('criterias')->insert($data);
+        DB::table('m_kriterias')->insert($data);
     }
 
     public function editData($id, $data)
     {
-        DB::table('criterias')->where('id', $id)->update($data);
+        DB::table('m_kriterias')->where('id', $id)->update($data);
     }
 
     public function deleteData($id)
     {
-        DB::table('criterias')->where('id', $id)->delete();
+        DB::table('m_kriterias')->where('id', $id)->delete();
     }
 
     public function jumlahData()
     {
-        DB::table('criterias')->count();
+        DB::table('m_kriterias')->count();
     }
 }

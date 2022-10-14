@@ -128,7 +128,7 @@ class c_nilai_smart extends Controller
         return redirect()->route('smart.create');
     }
 
-    
+
     public function create()
     {
         $alternative = $this->m_alternatif->allData();
@@ -163,7 +163,7 @@ class c_nilai_smart extends Controller
     {
         $akhir = $this->m_ranking->sortDesc();
         $ranking = 0;
-        foreach ($akhir as $hakhir)
+        foreach ($akhir as $akhir)
         {
             $id = $akhir->m_alternative_id;
             $ranking = $ranking + 1;

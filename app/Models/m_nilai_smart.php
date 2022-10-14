@@ -17,16 +17,18 @@ class m_nilai_smart extends Model
     	'm_alternatif_id', 'm_kriteria_id', 'nilai_awal', 'nilai_utility', 'nilai_akhir',
     ];
 
+    // relasi tabel
+
     public function User(){
         return $this->belongsTo(User::class);
     }
 
     public function Kriteria(){
-        return $this->hasOne(m_kriteria::class);
+        return $this->hasOne('App\Models\m_kriteria', 'm_kriteria_id');
     }
 
     public function Alternatif(){
-        return $this->hasOne(m_alternatif::class);
+        return $this->hasOne('App\Models\m_alternatif', 'm_alternatif_id');
     }
 
     public function allData()

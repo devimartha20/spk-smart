@@ -23,7 +23,7 @@
                         <td>{{ $alternatif->nama_alternatif }}</td>
                         @for ($k = 0; $k < $jKriteria; $k++)
                             <td>
-                                <input type="number" name="{{ $alternatif->nama_alternatif }}{{ $k }}nilai_awal" value="1" min="1" max="10" required>
+                                <input type="number" name="{{ $alternatif->id }}{{ $k }}nilai_awal" value="1" min="1" max="10" required>
                             </td>
                         @endfor
                             <input type="hidden" name="alternatif_id" value="{{ $alternatif->id }}">

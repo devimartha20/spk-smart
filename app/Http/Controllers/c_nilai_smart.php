@@ -29,7 +29,6 @@ class c_nilai_smart extends Controller
             'jKriteria' => $this->m_kriteria->jumlahData(),
             'ranking' => $this->m_ranking->allData(),
             'bobot' => $this->m_bobot->allData(),
-            'kosong' => $this->m_nilai_smart->datakosong(),
         ];
 
         return view('dashboards.user.smart', $data );
@@ -161,9 +160,9 @@ class c_nilai_smart extends Controller
                     'm_alternatif_id' => $m_alternatif_id,
                 ];
                 $this->m_ranking->addData($data);
-            }
-            return redirect()->route('user.rank.store');
+             }
         }
+        return redirect()->route('user.rank.store');
 
     }
 

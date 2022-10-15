@@ -76,6 +76,6 @@ class c_alternatif extends Controller
     {
         $this->m_alternatif->deleteData($id);
 
-        return redirect()->back();
+        return redirect('/user/utility');
     }
 }

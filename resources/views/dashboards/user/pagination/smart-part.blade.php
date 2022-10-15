@@ -91,7 +91,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($ranking as $ranking)
+        @foreach ($ranking->sortBy('ranking') as $ranking)
             <tr>
                 <td>{{ $ranking->Alternatif->nama_alternatif }}</td>
                 <td>{{ $ranking->Alternatif->nama_kampus }}</td>
@@ -118,7 +118,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($nilai_smart as $nilai)
+                @foreach ($nilai_smart->sortBy('m_alternatif_id') as $nilai)
                     <tr>
                         <td>{{ $nilai->Alternatif->nama_alternatif }}</td>
                         <td>{{ $nilai->Alternatif->nama_kampus }}</td>

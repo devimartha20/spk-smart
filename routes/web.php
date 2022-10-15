@@ -78,6 +78,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser','PreventBack
         ]
     ]);
 
+
     Route::resource('smart', c_nilai_smart::class, [
         'names' => [
             'index' => 'user.smart.index',
@@ -87,6 +88,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isUser','PreventBack
             'akhir' =>  'user.smart.akhir'
         ]
     ]);
+    Route::post('databaru', [c_nilai_smart::class, 'databaru'])->name('user.smart.databaru');
+
     Route::get('utility', [c_nilai_smart::class, 'utility'])->name('user.smart.utility');
     Route::get('akhir', [c_nilai_smart::class, 'akhir'])->name('user.smart.akhir');
     Route::get('create', [c_nilai_smart::class, 'create'])->name('user.rank.create');

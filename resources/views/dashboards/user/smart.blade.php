@@ -61,7 +61,7 @@
         </tr>
     </thead>
     <tbody>
-        <form action="{{ route('user.smart.store') }}" method="post">
+        <form action="{{ route('user.smart.databaru') }}" method="post">
             @csrf
                 @foreach ($kosong as $alternatif)
                     <tr>

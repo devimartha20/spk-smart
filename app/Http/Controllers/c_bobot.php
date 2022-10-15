@@ -33,7 +33,7 @@ class c_bobot extends Controller
 
     public function store(Request $request)
     {
-        
+
 
         $kriteria = $this->m_kriteria->allData();
         foreach ($kriteria as $data1) {
@@ -62,7 +62,7 @@ class c_bobot extends Controller
             ];
             $this->m_bobot->editData($id, $data);
         }
-        return redirect()->route('user.bobot.index');
+        return redirect()->back();
     }
 
     // public function edit($id)

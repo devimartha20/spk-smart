@@ -70,23 +70,27 @@ class c_nilai_smart extends Controller
         return view('smart.v_edit', $nilai_smart);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $m_alternatif_id)
     {
-        $alternatif = $this->m_alternatif->allData();
-        foreach ($alternatif as $data2) {
-        $kriteria = $this->m_kriteria->allData();
-        $i = 0;
-        foreach ($kriteria as $data1) {
-            $id = $data2->id;
-            $m_kriteria_id = $data1->id;
-            $data = [
-                'nilai_awal' => $request->{$id.$i."nilai_awal"},
-            ];
-            $this->m_nilai_smart->editData($id,  $m_kriteria_id, $data);
-            $i = $i + 1;
-        }
-        }
-        return redirect('smart.utylity');
+        // $alternatif = $this->m_alternatif->allData();
+        // foreach ($alternatif as $data2) {
+        // $kriteria = $this->m_kriteria->allData();
+        // $i = 0;
+        // foreach ($kriteria as $data1) {
+        //     $id = $data2->id;
+        //     $m_kriteria_id = $data1->id;
+        //     $data = [
+        //         'nilai_awal' => $request->{$id.$i."nilai_awal"},
+        //     ];
+        //     $this->m_nilai_smart->editData($m_alternatif_id,  $m_kriteria_id, $data);
+        //     $i = $i + 1;
+        // }
+        // }
+             $m_kriteria_id = $request->kriteria_id;
+             $nilai_awal = $request->{$m_alternatif_id.$m_kriteria_id."nilai_awal"};
+
+            $this->m_nilai_smart->editData($m_alternatif_id,  $m_kriteria_id, $nilai_awal);
+        return redirect('/user/utility/');
     }
 
     public function utility()
@@ -98,12 +102,17 @@ class c_nilai_smart extends Controller
             $a = $nilai->nilai_awal;
             $max = $this->m_nilai_smart->dataMax($m_kriteria_id);
             $min = $this->m_nilai_smart->dataMin($m_kriteria_id);
+            if ($max == $min){
+                $pembagi = 1;
+            }else{
+                $pembagi = ($max-$min);
+            }
             if ($nilai->jenis_kriteria == "benefit")
             {
-                $nilai_utility = ($a-$min)/($max-$min);
+                $nilai_utility = ($a-$min)/$pembagi;
             } else
             {
-                $nilai_utility = ($max-$a)/($max-$min);
+                $nilai_utility = ($max-$a)/$pembagi;
             }
 
             $this->m_nilai_smart->utility($m_alternatif_id, $m_kriteria_id, $nilai_utility);
@@ -135,7 +144,7 @@ class c_nilai_smart extends Controller
         {
             $id = $data1->id;
             $cek = $this->m_ranking->cekData($id);
-            if ($cek->hasil_akhir <> null) {
+            if ($cek <> null) {
                 $m_alternatif_id = $data1->id;
                 $id = $m_alternatif_id;
                 $hasil_akhir = $this->m_nilai_smart->hasilData($m_alternatif_id);
@@ -152,8 +161,8 @@ class c_nilai_smart extends Controller
                 ];
                 $this->m_ranking->addData($data);
             }
+            return redirect()->route('user.rank.store');
         }
-        return redirect()->route('user.rank.store');
 
     }
 
@@ -170,7 +179,7 @@ class c_nilai_smart extends Controller
             ];
             $this->m_ranking->updateData($data, $id);
         }
-        return redirect()->route('user.smart.index');
+        return redirect()->back();
     }
 
 }

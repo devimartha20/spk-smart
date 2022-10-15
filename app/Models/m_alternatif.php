@@ -51,4 +51,6 @@ class m_alternatif extends Model
     {
         m_alternatif::with('User')->where('user_id', Auth::user()->id)->count();
     }
+
+    
 }

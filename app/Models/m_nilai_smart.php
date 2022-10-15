@@ -88,6 +88,6 @@ class m_nilai_smart extends Model
 
     public function datakosong()
     {
-        return DB::table('m_nilai_samrts')->rightjoin('m_alternatifs', 'm_alternatifs.id', '=','m_nilai_smarts.m_alternatif_id')->where('m_alternatifs.user_id', Auth::user()->id)->get();
+        return m_nilai_smart::with('Alternatif', 'Kriteria')->rightjoin('m_alternatifs', 'm_alternatifs.id', '=','m_nilai_smarts.m_alternatif_id')->where('m_alternatifs.user_id', Auth::user()->id)->get();
     }
 }

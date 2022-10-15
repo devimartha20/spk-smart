@@ -42,7 +42,8 @@
                 @endforeach
         </tbody>
 </table>
-            <button type="submit">Simpan</button>
+<hr>
+            <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
         </form>
 @else
 <table>

@@ -49,7 +49,8 @@
 @else
 
 @if (!$kosong->isEmpty())
-
+<hr>
+<h4>Alternatif yang Belum diisi Nilai</h4>
 <table>
     <thead>
         <tr>
@@ -102,8 +103,7 @@
         @endforeach
     </tbody>
 </table>
-<hr>
-<h4>Alternatif yang Belum diisi Nilai</h4>
+
 
 <hr>
 <h3>Rincian Nilai</h3>

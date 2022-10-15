@@ -63,6 +63,27 @@ class c_nilai_smart extends Controller
         return redirect('/user/utility/');
     }
 
+    public function databaru(Request $request)
+    {
+        $kosong =  $this->m_nilai_smart->datakosong();
+        
+        foreach ($kosong as $data2) {
+            $kriteria = $this->m_kriteria->allData();
+            $i = 0;
+        foreach ($kriteria as $data1) {
+            $id = $data2->id;
+            $data = [
+                'm_alternatif_id' => $id,
+                'm_kriteria_id' => $data1->id,
+                'nilai_awal' => $request->{$id.$i."nilai_awal"},
+            ];
+            $this->m_nilai_smart->addData($data);
+            $i = $i + 1;
+        }
+        }
+        return redirect('/user/utility/');
+    }
+
     public function edit($id)
     {
         $nilai_smart = [

@@ -106,8 +106,14 @@ class c_nilai_smart extends Controller
             // if ($max == $min){
             //     $pembagi = 1;
             // }else{
+            
                 $pembagi = ($max-$min);
-            // }
+            if ($pembagi == 0) {
+                $nilai_utility = 0;
+            }
+            else {
+                # code...
+           
             if ($nilai->jenis_kriteria == "benefit")
             {
                 $nilai_utility = ($a-$min)/$pembagi;
@@ -115,6 +121,7 @@ class c_nilai_smart extends Controller
             {
                 $nilai_utility = ($max-$a)/$pembagi;
             }
+        }
 
             $this->m_nilai_smart->utility($m_alternatif_id, $m_kriteria_id, $nilai_utility);
         }

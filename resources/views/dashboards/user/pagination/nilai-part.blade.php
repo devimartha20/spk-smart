@@ -34,7 +34,6 @@
         </form>
 <hr>
 <p>Tambah Alternatif</p>
-<hr>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahAlternatif">Tambah</button>
 
 
@@ -71,6 +70,7 @@
             </div>
           </div>
 
+        @endif
 @endsection
 @section('jsContent')
 

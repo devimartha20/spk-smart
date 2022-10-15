@@ -3,6 +3,49 @@
 
 @endsection
 @section('content')
+@if($alternatif->isEmpty())
+    <h2>Kamu belum mengisi Alternatif</h2>
+    <a href="{{ route('user.alternatif.index') }}"><button>Isi Alternatif</button></a>
+
+@elseif ( $bobot->isEmpty())
+<h2>Kamu belum mengisi Bobot</h2>
+<a href="{{ route('user.bobot.index') }}"><button>Isi Bobot</button></a>
+
+<hr>
+
+@elseif ($nilai_smart->isEmpty())
+ {{-- form input nilai awal --}}
+
+<table>
+    <thead>
+        <tr>
+            <th>Alternatif</th>
+        @foreach ($kriteria as $kriteria)
+            <th>{{ $kriteria->nama_kriteria }}</th>
+        @endforeach
+        </tr>
+    </thead>
+    <tbody>
+        <form action="{{ route('user.smart.store') }}" method="post">
+            @csrf
+                @foreach ($alternatif as $alternatif)
+                    <tr>
+                        <td>{{ $alternatif->nama_alternatif }}</td>
+                        @for ($k = 0; $k < $jKriteria; $k++)
+                            <td>
+                                <input type="number" name="{{ $alternatif->id }}{{ $k }}nilai_awal" value="1" min="1" max="10" required>
+                            </td>
+                        @endfor
+                            <input type="hidden" name="alternatif_id" value="{{ $alternatif->id }}">
+                    </tr>
+                @endforeach
+        </tbody>
+</table>
+<hr>
+            <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+        </form>
+@else
+
 @if (!$kosong->isEmpty())
 <hr>
 <h4>Alternatif yang Belum diisi Nilai</h4>
@@ -124,11 +167,6 @@
 
 
 @endif
-
-
-@endsection
-
-
 @endsection
 @section('jsContent')
 

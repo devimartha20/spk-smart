@@ -47,29 +47,7 @@
             <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
         </form>
 @else
-<h4>Ranking</h4>
-<table>
-    <thead>
-        <tr>
-            <th>Alternatif</th>
-            <th>Kampus</th>
-            <th>Hasil Akhir</th>
-            <th>Ranking</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($ranking as $ranking)
-            <tr>
-                <td>{{ $ranking->Alternatif->nama_alternatif }}</td>
-                <td>{{ $ranking->Alternatif->nama_kampus }}</td>
-                <td>{{ $ranking->hasil_akhir }}</td>
-                <td>{{ $ranking->ranking }}</td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
-<hr>
-<h4>Alternatif yang Belum diisi Nilai</h4>
+
 @if (!$kosong->isEmpty())
 
 <table>
@@ -102,6 +80,31 @@
         </form>
 
 @endif
+<hr>
+<h4>Ranking</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Alternatif</th>
+            <th>Kampus</th>
+            <th>Hasil Akhir</th>
+            <th>Ranking</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($ranking as $ranking)
+            <tr>
+                <td>{{ $ranking->Alternatif->nama_alternatif }}</td>
+                <td>{{ $ranking->Alternatif->nama_kampus }}</td>
+                <td>{{ $ranking->hasil_akhir }}</td>
+                <td>{{ $ranking->ranking }}</td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+<hr>
+<h4>Alternatif yang Belum diisi Nilai</h4>
+
 <hr>
 <h3>Rincian Nilai</h3>
 <hr>
